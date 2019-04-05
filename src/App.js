@@ -4,6 +4,7 @@ import './App.css';
 import RandomData from './data/random_excuses';
 import TransportData from './data/transport_excuses'
 import Excuse from './components/Excuse'
+import Button from './components/Button'
 
 class App extends Component {
 
@@ -27,12 +28,12 @@ class App extends Component {
     // Declare empty variable that will store randomized index
     let idRandomzized;
     const disruptedTransportData = TransportData.filter(data => data.disruption !== false)
-    switch (this.state.category) {
+    switch(this.state.category) {
       case "transport":
         idRandomzized = randomize(disruptedTransportData);
         // Update excuse state with randomized index
         this.setState({
-          excuse: "Désolé, il y a eu " + disruptedTransportData[idRandomzized].excuse + " sur la ligne " + disruptedTransportData[idRandomzized].name
+          excuse: "Désolé patron il y a " + disruptedTransportData[idRandomzized].excuse + " sur la ligne " + disruptedTransportData[idRandomzized].name
         })
         break;
       case "serious":
@@ -59,36 +60,39 @@ class App extends Component {
     // console.table(RandomData[1].funny)
     // console.table(TransportData)
     return (
-      <div className="Layout">
-        <h1>Choissisez une catégorie d'excuse</h1>
-        {/* Categories */}
-        <div className="Categories">
-          <div className="Radio-group">
-            <input type="radio" id="transport" name="drone" value="transports"
-              defaultChecked="checked"
-              onChange={this.changeCategory}>
-            </input>
-            <label htmlFor="transport">Transports</label>
-
-            <input type="radio" id="serious" name="drone" value="serious"
-              onChange={this.changeCategory}>
-            </input>
-            <label htmlFor="serious">Sérieuses</label>
-
-            <input type="radio" id="funny" name="drone" value="funny"
-              onChange={this.changeCategory}>
-            </input>
-            <label htmlFor="funny">Insolites</label>
-          </div>
-        </div>
-
+      <div>
+        <h5>Choissisez une catégorie</h5>
         <div>
-          <button type="button" onClick={this.displayRandomExcuse}>Valider</button>
+
+          <input type="radio" id="transport" name="drone" value="transports"
+            defaultChecked="checked"
+            onChange={this.changeCategory}>
+          </input>
+          <label htmlFor="transport">Transports</label>
+
+          <input type="radio" id="serious" name="drone" value="serious" 
+          onChange={this.changeCategory}>
+          </input>
+          <label htmlFor="serious">Serious</label>
+
+          <input type="radio" id="funny" name="drone" value="funny" 
+          onChange={this.changeCategory}>
+          </input>
+          <label htmlFor="funny">Funny</label>
+
         </div>
-        <Excuse excuse={this.state.excuse} />
+        <div>
+          <Button onClick={this.displayRandomExcuse} />
+        </div>
+        <Excuse excuse={this.state.excuse}/> 
       </div>
     );
   }
 }
+
+
+
+
+
 
 export default App;
