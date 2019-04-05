@@ -1,0 +1,50 @@
+[
+    {
+        "serious": [
+            {
+                "id": 1,
+                "excuse": "Mon fils à vomit ce matin"
+            },
+            {
+                "id": 2,
+                "excuse": "Ma clef c'est coincé dans ma porte et j'ai du appelé le serrurier"
+            },
+            {
+                "id": 3,
+                "excuse": "Je me suis fais contrôlé par la police sur le chemin"
+            },
+            {
+                "id": 4,
+                "excuse": "Je me suis fais volé mon sac"
+            },
+            {
+                "id": 5,
+                "excuse": "J'ai été témoin d'une aggression et j'ai dû faire un rapport à la police"
+            }
+        ]
+    },
+    {
+        "funny": [
+            {
+                "id": 1,
+                "excuse": "J'ai oublié d'enlever la lecture automatique sur Netflix"
+            },
+            {
+                "id": 2,
+                "excuse": "trump"
+            },
+            {
+                "id": 3,
+                "excuse": "Désolé j'avais piscine"
+            },
+            {
+                "id": 4,
+                "excuse": "Ma soeur accouchait ce matin, normalement c'est un garçon"
+            },
+            {
+                "id": 5,
+                "excuse": "L'audace c'est ça."
+            }
+        ]
+    }
+]
