@@ -1,8 +1,9 @@
 import React from 'react'
+import './Excuse.css'
 
 const Excuse = ({ excuse }) => {
     return (
-        <div>
+        <div className='excuse'>
             <p>{excuse}</p>
         </div>
     )
