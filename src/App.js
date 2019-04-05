@@ -27,12 +27,12 @@ class App extends Component {
     // Declare empty variable that will store randomized index
     let idRandomzized;
     const disruptedTransportData = TransportData.filter(data => data.disruption !== false)
-    switch(this.state.category) {
+    switch (this.state.category) {
       case "transport":
         idRandomzized = randomize(disruptedTransportData);
         // Update excuse state with randomized index
         this.setState({
-          excuse: "Désolé patron il y a eu " + disruptedTransportData[idRandomzized].excuse + " sur la ligne " + disruptedTransportData[idRandomzized].name
+          excuse: "Désolé, il y a eu " + disruptedTransportData[idRandomzized].excuse + " sur la ligne " + disruptedTransportData[idRandomzized].name
         })
         break;
       case "serious":
@@ -61,28 +61,31 @@ class App extends Component {
     return (
       <div className="Layout">
         <h1>Choissisez une catégorie d'excuse</h1>
+        {/* Categories */}
         <div className="Categories">
-          <input type="radio" id="transport" name="drone" value="transports"
-            defaultChecked="checked"
-            onChange={this.changeCategory}>
-          </input>
-          <label htmlFor="transport">Transports</label>
+          <div className="Radio-group">
+            <input type="radio" id="transport" name="drone" value="transports"
+              defaultChecked="checked"
+              onChange={this.changeCategory}>
+            </input>
+            <label htmlFor="transport">Transports</label>
 
-          <input type="radio" id="serious" name="drone" value="serious" 
-          onChange={this.changeCategory}>
-          </input>
-          <label htmlFor="serious">Sérieuses</label>
+            <input type="radio" id="serious" name="drone" value="serious"
+              onChange={this.changeCategory}>
+            </input>
+            <label htmlFor="serious">Sérieuses</label>
 
-          <input type="radio" id="funny" name="drone" value="funny" 
-          onChange={this.changeCategory}>
-          </input>
-          <label htmlFor="funny">Insolites</label>
-
+            <input type="radio" id="funny" name="drone" value="funny"
+              onChange={this.changeCategory}>
+            </input>
+            <label htmlFor="funny">Insolites</label>
+          </div>
         </div>
+
         <div>
           <button type="button" onClick={this.displayRandomExcuse}>Valider</button>
         </div>
-        <Excuse excuse={this.state.excuse}/> 
+        <Excuse excuse={this.state.excuse} />
       </div>
     );
   }
