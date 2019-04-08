@@ -5,38 +5,38 @@
   justify-content: center;
   text-align: center;
   margin: 1em 2em;
-  }
+}
   
-  input[type=radio] {
+input[type=radio] {
   position: absolute;
   visibility: hidden;
   display: none;
-  }
-  
-  label {
+}
+
+label {
   color: black;
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
   padding: 5px 20px;
-  }
-  
-  input[type=radio]:checked + label{
+}
+
+input[type=radio]:checked + label{
   color: white;
   background:#332f35;
-  }
-  
-  label + input[type=radio] + label {
+}
+
+label + input[type=radio] + label {
   border-left: solid 3px #332F35;
-  }
-  
-  .Radio-group {
+}
+
+.Radio-group {
   border: solid 3px#332f35;
   display: inline-block;
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
-  }
+}
 
 .container {
   display: flex;
