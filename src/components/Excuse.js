@@ -1,12 +1,14 @@
 import React from 'react'
-import './Excuse.css'
+import "./Excuse.css"
 
-const Excuse = ({ excuse }) => {
-    return (
-        <div className='excuse'>
-            <p>{excuse}</p>
-        </div>
-    )
-}
 
-export default Excuse
+const Excuse = ({excuse}) => {
+ return (
+ <div className="frame">
+ <div >"{excuse}"</div>
+ <div className="copybutton">Copy</div>
+ </div>
+ )
+ }
+
+ export default Excuse
