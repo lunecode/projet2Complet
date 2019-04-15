@@ -1,18 +1,29 @@
 import React from 'react'
 import './Loader.css'
 
-const Loader = () => {
-    
 
+const Loader = () => {
     return(
-        <div class="box">
-            <div class="b b1"></div>
-            <div class="b b2"></div>
-            <div class="b b3"></div>
-            <div class="b b4"></div>
+        <div className='scaling'>
+            <div className="container">
+                <div className="dot dot-1"></div>
+                <div className="dot dot-2"></div>
+                <div className="dot dot-3"></div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
+            </filter>
+            </defs>
+            </svg>
         </div>
-        
     )
 }
+
+
+
 
 export default Loader

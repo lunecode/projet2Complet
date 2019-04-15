@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // CSS
 import './App.css';
+import './components/Radio.css'
 
 // Data
 import RandomData from './data/random_excuses';
