@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // CSS
 import './App.css';
+import './components/Radio.css'
 
 // Data
 import RandomData from './data/random_excuses';
@@ -10,7 +11,7 @@ import TransportData from './data/transport_excuses'
 // Components
 import Excuse from './components/Excuse'
 import Button from './components/Button'
-import Loader from './components/Loader'
+import Radio from './components/Radio'
 
 class App extends Component {
 
@@ -30,14 +31,17 @@ class App extends Component {
   displayRandomExcuse = () => {
 
     // Loading animation
-    const loader = document.querySelector('.box')
-    loader.style.animation = 'sca 1s ease-out forwards'
+    const loader = document.querySelector('.scaling')
+    const button = document.querySelector('.button')
+    loader.style.animation = 'scaling 2s ease-out forwards'
+    button.style.animation = 'opacityButton 1.2s ease-in alternate infinite'
 
     // Set a timer before displaying the excuse
     setTimeout(() => {
       
       // Stops loading animation
       loader.style.animation = 'none'
+      button.style.animation = 'none'
       // Function that randomize index in data
       const randomize = (data) => Math.floor(Math.random() * data.length);
       // Filter data for transport disruptions
@@ -73,37 +77,19 @@ class App extends Component {
           console.log("VA BOSSER")
       }
     }
-      , 1500)
+      , 2400)
 
   }
 
   render() {
+    const modifyBackground = 'background ' + this.state.category;
     return (
-      <div className='Layout'>
-        <h2>Choissisez une catégorie d'excuse</h2>
-        <div>
-          <div className='Radio-group'>
-            <input type="radio" id="transport" name="drone" value="transports"
-              defaultChecked="checked"
-              onChange={this.changeCategory}>
-            </input>
-            <label htmlFor="transport">Transports</label>
-
-            <input type="radio" id="serious" name="drone" value="serious"
-              onChange={this.changeCategory}>
-            </input>
-            <label htmlFor="serious">Sérieux</label>
-
-            <input type="radio" id="funny" name="drone" value="funny"
-              onChange={this.changeCategory}>
-            </input>
-            <label htmlFor="funny">Insolite</label>
-          </div>
+      <div className={modifyBackground}>
+        <div className='Layout'>
+          <Button fonction={this.displayRandomExcuse} category={this.state.category} />
+          <Excuse excuse={this.state.excuse} />
+          <Radio func={this.changeCategory} />
         </div>
-        <div className='interaction'>
-          <Button fonction={this.displayRandomExcuse} />
-        </div>
-        <Excuse excuse={this.state.excuse} />
       </div>
     );
   }

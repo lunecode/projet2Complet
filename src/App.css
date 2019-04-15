@@ -1,52 +1,44 @@
+html{
+  width: 100%;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.background{
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.background.transport{
+  background: #4dcb7f; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #4dcb7f 0%, #4dcbbe 72%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #4dcb7f 0%,#4dcbbe 72%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #4dcb7f 0%,#4dcbbe 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dcb7f', endColorstr='#4dcbbe',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */  
+  background-repeat: no-repeat;
+}
+
+.background.funny{
+  background: rgb(203,127,77); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(203,127,77,1) 27%, rgba(203,77,153,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(203,127,77,1) 27%,rgba(203,77,153,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(203,127,77,1) 27%,rgba(203,77,153,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb7f4d', endColorstr='#cb4d99',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
+
 .Layout {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  margin: 1em 2em;
-}
-  
-input[type=radio] {
-  position: absolute;
-  visibility: hidden;
-  display: none;
-}
-
-label {
-  color: black;
-  display: inline-block;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 5px 20px;
-}
-
-input[type=radio]:checked + label{
-  color: white;
-  background:#332f35;
-}
-
-label + input[type=radio] + label {
-  border-left: solid 3px #332F35;
-}
-
-.Radio-group {
-  border: solid 3px#332f35;
-  display: inline-block;
-  margin: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  align-items: center;
-  position: absolute;
-}
-
-.interaction{
-  margin-top: 5em;
-  margin-bottom: 3.5em;
 }
