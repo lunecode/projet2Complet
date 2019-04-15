@@ -102,7 +102,6 @@ class App extends Component {
         </div>
         <div className='interaction'>
           <Button fonction={this.displayRandomExcuse} />
-          <Loader />
         </div>
         <Excuse excuse={this.state.excuse} />
       </div>
