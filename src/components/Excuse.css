@@ -1,3 +1,29 @@
-.excuse p{
-    font-size: 1.5em;
+.frame {
+    padding: 40px 40px 40px;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
 }
+
+.copybutton {
+  position: absolute;
+  top: 19%;
+  left: 92%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: flex-end;
+  border: 2px solid black; */
+      }
+
+.copybutton:hover {
+  background-color: black;
+  color: white;}
