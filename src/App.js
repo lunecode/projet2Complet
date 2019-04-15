@@ -33,12 +33,13 @@ class App extends Component {
     // Loading animation
     const loader = document.querySelector('.scaling')
     const button = document.querySelector('.button')
+    const frame = document.querySelector('.frame')
     loader.style.animation = 'scaling 2s ease-out forwards'
     button.style.animation = 'opacityButton 1.2s ease-in alternate infinite'
-
+    
     // Set a timer before displaying the excuse
     setTimeout(() => {
-      
+      frame.style.display = 'flex'
       // Stops loading animation
       loader.style.animation = 'none'
       button.style.animation = 'none'
