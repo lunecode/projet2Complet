@@ -9,6 +9,7 @@ import RandomData from './data/random_excuses';
 import TransportData from './data/transport_excuses'
 
 // Components
+import DetailsAlert from './components/DetailsAlert'
 import Excuse from './components/Excuse'
 import Button from './components/Button'
 import Radio from './components/Radio'
@@ -90,6 +91,10 @@ class App extends Component {
           <Button fonction={this.displayRandomExcuse} category={this.state.category} />
           <Excuse excuse={this.state.excuse} />
           <Radio func={this.changeCategory} />
+          <DetailsAlert 
+            picture="https://pbs.twimg.com/profile_images/755026402475466752/4Fa09qRh_bigger.jpg"            
+            details= "Détails de l'incident"
+            />
         </div>
       </div>
     );
@@ -98,7 +103,7 @@ class App extends Component {
 
 
 
-
+  
 
 
 export default App;
