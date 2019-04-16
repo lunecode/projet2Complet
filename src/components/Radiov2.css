@@ -1,16 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:700,900");
 .normal-container {
   position: absolute;
-  top:200px;
-  height: 25%; 
+  top:260px;
   margin: auto;
 }
 
 .smile-rating-container {
   position: relative;
   height: 10%;
-  min-width: 220px;
-  max-width: 520px;
+  width: 360px;
   margin: auto;
   font-family: "Roboto", sans-serif;
   top: 20%;
@@ -24,7 +22,7 @@
 
 .rating-label {
   position: relative;
-  font-size: 1.6em;
+  font-size: 1.45em;
   text-align: center;
   flex: 0.34;
   z-index: 3;
@@ -40,13 +38,13 @@
 }
 
 .rating-label-funny {
-  left: -58px;
-  text-align: right;
+  left: 10px;
+  text-align: left;
 }
 
 .rating-label-transport {
-  left: 58px;
-  text-align: left;
+  left: -10px;
+  text-align: right;
   color: #222;
 }
 
@@ -58,7 +56,7 @@
   position: relative;
   height: 65px;
   width: 165px;
-  background: #d0cccd;
+  background: #4D99CB;
   border-radius: 500px;
   transition: all 500ms;
 }
@@ -68,7 +66,7 @@
   width: 54px;
   height: 54px;
   background-color: white;
-  left: 182px;
+  left: 108px;
   border-radius: 500px;
   transition: all 500ms;
   z-index: 4;
@@ -78,13 +76,11 @@
   position: absolute;
   height: 12px;
   width: 8px;
-  top: 22px;
-  background: #d0cccd;
+  background: #4D99CB;
   border-radius: 500px;
+  top: 22px;
   z-index: 5;
   transition: all 440ms;
-  -webkit-animation: blink-eye 3s infinite;
-          animation: blink-eye 3s infinite;
 }
 
 @-webkit-keyframes blink-eye {
@@ -173,11 +169,11 @@
   }
 }
 .rating-eye-left {
-  left: 192px;
+  left: 120px;
 }
 
 .rating-eye-right {
-  left: 216px;
+  left: 140px;
 }
 
 .mouth {
@@ -185,64 +181,64 @@
   width: 28px;
   height: 20px;
   z-index: 6;
-  border: 4px solid #d0cccd;
+  border: 4px solid #4D99CB;
   border-radius: 10%;
   border-bottom-color: rgba(1, 1, 1, 0);
   border-right-color: rgba(1, 1, 1, 0);
   border-left-color: rgba(1, 1, 1, 0);
   top: 42px;
-  left: 190px;
+  left: 116px;
   transition: all 500ms;
 }
 
 /*
-Toggle Changes
-*/
-#transport:checked ~ .rating-label-transport {
-  color: #555e63;
-}
+  Toggle Changes
+  */
+  #transport:checked ~ .rating-label-transport {
+    color: #555e63;
+  }
 
-#funny:checked ~ .rating-label-transport {
-  color: #d0cccd;
-}
+  #funny:checked ~ .rating-label-transport {
+    color: #d0cccd;
+  }
 
-#funny:checked ~ .mouth {
-  border: 4px solid #00b9ee;
-  border-bottom-color: rgba(1, 1, 1, 0);
-  border-right-color: rgba(1, 1, 1, 0);
-  border-left-color: rgba(1, 1, 1, 0);
-  top: 23px;
-  left: 291px;
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
-  border-radius: 100%;
-}
+  #funny:checked ~ .mouth {
+    border: 4px solid #CB4D5A;
+    border-bottom-color: rgba(1, 1, 1, 0);
+    border-right-color: rgba(1, 1, 1, 0);
+    border-left-color: rgba(1, 1, 1, 0);
+    top: 23px;
+    left: 221px;
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+    border-radius: 100%;
+  }
 
-#funny:checked ~ .rating-label-funny {
-  color: #555e63;
-}
+  #funny:checked ~ .rating-label-funny {
+    color: #555e63;
+  }
 
-#funny:checked ~ .smile-rating-toggle {
-  left: 282px;
-}
+  #funny:checked ~ .smile-rating-toggle {
+    left: 211px;
+  }
 
-#funny:checked ~ .rating-eye-left {
-  left: 292px;
-}
+  #funny:checked ~ .rating-eye-left {
+    left: 225px;
+  }
 
-#funny:checked ~ .rating-eye-right {
-  left: 316px;
-}
+  #funny:checked ~ .rating-eye-right {
+    left: 244px;
+  }
 
-#funny:checked ~ .toggle-rating-pill {
-  background-color: #00b9ee;
-}
+  #funny:checked ~ .toggle-rating-pill {
+    background-color: #CB4D5A;
+  }
 
-#funny:checked ~ .rating-eye {
-  background-color: #00b9ee;
-}
+  #funny:checked ~ .rating-eye {
+    background-color: #CB4D5A;
+  }
 
-@media only screen and (max-width: 524px) {
+@media only screen and (max-width: 720px) {
   .normal-container {
     position: absolute;
     top:260px;
@@ -252,7 +248,7 @@ Toggle Changes
   .smile-rating-container {
     position: relative;
     height: 10%;
-    width: 490px;
+    width: 360px;
     margin: auto;
     font-family: "Roboto", sans-serif;
     top: 20%;
@@ -310,7 +306,7 @@ Toggle Changes
     width: 54px;
     height: 54px;
     background-color: white;
-    left: 168px;
+    left: 108px;
     border-radius: 500px;
     transition: all 500ms;
     z-index: 4;
@@ -328,11 +324,11 @@ Toggle Changes
   }
 
   .rating-eye-left {
-    left: 180px;
+    left: 120px;
   }
 
   .rating-eye-right {
-    left: 201px;
+    left: 140px;
   }
 
   .mouth {
@@ -346,7 +342,7 @@ Toggle Changes
     border-right-color: rgba(1, 1, 1, 0);
     border-left-color: rgba(1, 1, 1, 0);
     top: 42px;
-    left: 177px;
+    left: 116px;
     transition: all 500ms;
   }
 
@@ -367,7 +363,7 @@ Toggle Changes
     border-right-color: rgba(1, 1, 1, 0);
     border-left-color: rgba(1, 1, 1, 0);
     top: 23px;
-    left: 275px;
+    left: 221px;
     -webkit-transform: rotateX(180deg);
             transform: rotateX(180deg);
     border-radius: 100%;
@@ -378,15 +374,15 @@ Toggle Changes
   }
 
   #funny:checked ~ .smile-rating-toggle {
-    left: 266px;
+    left: 211px;
   }
 
   #funny:checked ~ .rating-eye-left {
-    left: 275px;
+    left: 225px;
   }
 
   #funny:checked ~ .rating-eye-right {
-    left: 300px;
+    left: 244px;
   }
 
   #funny:checked ~ .toggle-rating-pill {
