@@ -1,0 +1,90 @@
+[
+    {
+        "serious": [
+            {
+                "id": 1,
+                "excuse": "J'ai dû emmener mon fils chez le docteur ce matin"
+            },
+            {
+                "id": 2,
+                "excuse": "Ma clef c'est coincé dans ma porte et j'ai du appelé le serrurier"
+            },
+            {
+                "id": 3,
+                "excuse": "Je me suis fais contrôlé par la police sur le chemin"
+            },
+            {
+                "id": 4,
+                "excuse": "Je me suis fais volé mon sac"
+            },
+            {
+                "id": 5,
+                "excuse": "J'ai été témoin d'une aggression et j'ai dû faire un rapport à la police."
+            },
+            {
+                "id": 6,
+                "excuse": "Franchement je suis resté 2 heures de plus hier, je peux bien arriver en retard de deux heures aujourd'hui."
+            }
+        ]
+    },
+    {
+        "funny": [
+            {
+                "id": 1,
+                "excuse": "J'ai oublié d'enlever la lecture automatique sur Netflix"
+            },
+            {
+                "id": 2,
+                "excuse": "Trump"
+            },
+            {
+                "id": 3,
+                "excuse": "Désolé j'avais piscine"
+            },
+            {
+                "id": 4,
+                "excuse": "Ma soeur accouchait ce matin, normalement c'est un garçon"
+            },
+            {
+                "id": 5,
+                "excuse": "L'audace c'est ça."
+            },
+            {
+                "id": 6,
+                "excuse": "Il y avait un tournage de film d'action sur la ligne 1, je suis en retard mais il y avait Tom Cruise c'était cool!"
+            },
+            {
+                "id": 7,
+                "excuse": "J'ai dû emmener mon fils chez le docteur ce matin"
+            },
+            {
+                "id": 8,
+                "excuse": "Ma clef c'est coincé dans ma porte et j'ai du appelé le serrurier"
+            },
+            {
+                "id": 9,
+                "excuse": "Je me suis fais contrôlé par la police sur le chemin"
+            },
+            {
+                "id": 10,
+                "excuse": "Je me suis fais volé mon sac"
+            },
+            {
+                "id": 11,
+                "excuse": "J'ai été témoin d'une aggression et j'ai dû faire un rapport à la police."
+            },
+            {
+                "id": 12,
+                "excuse": "Franchement je suis resté 2 heures de plus hier, je peux bien arriver en retard de deux heures aujourd'hui."
+            },
+            {
+                "id": 13,
+                "excuse" : "Je suis en retard parce que déjà que de base les gens ne savent pas conduire quand il pleut un peu, mais en plus il y a une audi qui a tapé une course poursuite avec la police, ils ont commencé a rouler sur les trotoir. Je suis resté bloqué, franchement j'aurais du filmer."
+            },
+            {
+                "id": 14,
+                "excuse" : "J'en ai une bonne : un camion qui percute un pont, un bloc de béton tombe sur la voie de rer... Je vous raconte la suite demain."
+            }
+        ]
+    }
+]
