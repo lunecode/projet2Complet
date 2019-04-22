@@ -66,7 +66,7 @@ for (let i = 0; i < allLines.length; i++) {
         tweets.filter(
           tweet => (tweet.full_text.match(/ralenti|interrompu|perturbé/i)) 
             && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux/i)) )
-            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(5, 'hours'))
+            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(1, 'hours'))
         ).map(tweet => {
 
           // Formating time with Moment.js
@@ -95,7 +95,7 @@ for (let i = 0; i < allLines.length; i++) {
           } else if (matchText(/perturbé/i)) {
             issue = "perturbations"
           }
-
+          
           // Get cause of issue in tweet string
           let cause = "";
           
@@ -109,8 +109,14 @@ for (let i = 0; i < allLines.length; i++) {
             cause = "mesures de sécurité"
           } else if (matchText(/malaise/i)) {
             cause = "malaise voyageur"
-          }
-
+          } else if (matchText(/accident grave de personne|accident de personne|incident voyageur/i)) {
+            cause = "suicide sur la voie"
+          } else if (matchText(/personne sur les voies|personnes sur les voies/i)) {
+            cause = "personnes sur les voies"
+          } else if (matchText(/incident technique/i)) {
+            cause = "incident technique"
+          } 
+          
           // Return an object with custom propreties from twitter API
           result.push(
             {
@@ -138,6 +144,7 @@ for (let i = 0; i < allLines.length; i++) {
 }
 
 app.use(morgan("dev"));
+
 app.use(bodyyParser.json());
 
 app.get("/api/transport", (req, res) => {
