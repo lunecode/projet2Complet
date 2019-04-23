@@ -32,17 +32,26 @@ class App extends Component {
 
     // Loading animation
     const loader = document.querySelector('.scaling')
-    const button = document.querySelector('.button')
-    const frame = document.querySelector('.container-DetailsAlert')
+    const buttonT = document.querySelector('.button.transport')
+    const buttonF = document.querySelector('button.funny')
+    const frame = document.querySelector('.frame')
     loader.style.animation = 'scaling 2s ease-out forwards'
-    button.style.animation = 'opacityButton 1.2s ease-in alternate infinite'
     
+
+    switch (this.state.category) {
+
+      case "transport":
+      buttonT.style.animation = 'opacityButtonT 1.2s ease-in alternate infinite'
+      break;
+
+      case "funny":
+      buttonF.style.animation = 'opacityButtonF 1.2s ease-in alternate infinite'
+    }
     // Set a timer before displaying the excuse
     setTimeout(() => {
       frame.style.display = 'flex'
       // Stops loading animation
       loader.style.animation = 'none'
-      button.style.animation = 'none'
       // Function that randomize index in data
       const randomize = (data) => Math.floor(Math.random() * data.length);
       // Filter data for transport disruptions
@@ -53,6 +62,7 @@ class App extends Component {
       switch (this.state.category) {
 
         case "transport":
+          buttonT.style.animation = 'none'
           idRandomzized = randomize(disruptedTransportData);
           // Update excuse state with randomized index
           this.setState({
@@ -68,6 +78,7 @@ class App extends Component {
           break;
 
         case "funny":
+          buttonF.style.animation = 'none'
           idRandomzized = randomize(RandomData[1].funny);
           this.setState({
             excuse: RandomData[1].funny[idRandomzized].excuse
