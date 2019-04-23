@@ -20,6 +20,17 @@ class App extends Component {
   state = {
     category: "transport",
     excuse: "",
+    transport_data: []
+  }
+
+  componentDidMount() {
+    fetch("/api/transport")
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        transport_data: data
+      })
+    })
   }
 
   // Change excuses category
@@ -28,7 +39,7 @@ class App extends Component {
       category: event.target.id,
     })
   }
-
+  
   displayRandomExcuse = () => {
 
     // Loading animation
@@ -47,6 +58,10 @@ class App extends Component {
 
       case "funny":
       buttonF.style.animation = 'opacityButtonF 1.2s ease-in alternate infinite'
+      break;
+
+      default:
+      console.log("test")
     }
     // Set a timer before displaying the excuse
     setTimeout(() => {
