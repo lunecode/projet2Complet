@@ -12,7 +12,7 @@ const app = express();
 
 const Twitter = require("twitter");
 
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
   consumer_secret: process.env.CONSUMER_SECRET,
   bearer_token: process.env.BEARER_TOKEN
@@ -23,7 +23,6 @@ const lignesRATP = [];
 const lignesSNCF = ["LigneH_SNCF", "LigneJ_SNCF", "LigneL_SNCF", "LigneP_SNCF", "LigneR_SNCF", "lignesNetU_SNCF", "RERC_SNCF", "RERD_SNCF", "RERE_SNCF"];
 
 //  Adding names in RATP list
-
 //  [METRO]
 for (let i = 1; i <= 13; i++) {
   lignesRATP.push("Ligne" + i + "_RATP");
@@ -49,7 +48,7 @@ const allLines = [ ...lignesRATP, ...lignesSNCF];
 let result =  [];
 
 for (let i = 0; i < allLines.length; i++) {
-  // Set parameters to get grom Twitter API
+  // Set parameters to get from Twitter API
   let params = {
     screen_name: allLines[i],
     exclude_replies: "true",
@@ -95,7 +94,7 @@ for (let i = 0; i < allLines.length; i++) {
           } else if (matchText(/perturbé/i)) {
             issue = "perturbations"
           }
-          
+
           // Get cause of issue in tweet string
           let cause = "";
           
