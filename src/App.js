@@ -34,7 +34,7 @@ class App extends Component {
     const loader = document.querySelector('.scaling')
     const buttonT = document.querySelector('.button.transport')
     const buttonF = document.querySelector('button.funny')
-    const frame = document.querySelector('.frame')
+    const frame = document.querySelector('.container-DetailsAlert')
     loader.style.animation = 'scaling 2s ease-out forwards'
     
 
