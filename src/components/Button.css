@@ -1,13 +1,6 @@
 .button{
   height: 200px;
   width: 200px;
-  background: rgb(77, 153, 203); /* Old browsers */
-  background: -moz-linear-gradient(-135deg, rgba(77, 153, 203,1) 0%, rgba(77,203,190,1) 100%),url('running.jpg'); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-135deg, rgba(77, 153, 203,1) 0%,rgba(77,203,190,1) 100%),url('running.jpg'); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(-135deg, rgba(77, 153, 203,1) 0%,rgba(77,203,190,1) 100%),url('running.jpg'); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dcb7f', endColorstr='#4dcbbe',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */  
-  background-blend-mode: multiply;
-  background-size: cover; 
   border-radius: 50%;
   box-shadow: inset 8px 5px 12px 12px rgba(255, 255, 255, .15);
   outline-style: none;
@@ -15,14 +8,33 @@
   z-index: 10;
   position: relative;
   top: 5px;
-  margin-top: 50px;
-  
+  margin-top: 50px; 
+}
+
+.button.transport{
+  background: rgb(77, 153, 203); /* Old browsers */
+  background: -moz-linear-gradient(-135deg, rgba(77, 153, 203,1) 0%, rgba(77,203,190,1) 100%),url('running.jpg'); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-135deg, rgba(77, 153, 203,1) 0%,rgba(77,203,190,1) 100%),url('running.jpg'); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(-135deg, rgba(77, 153, 203,1) 0%,rgba(77,203,190,1) 100%),url('running.jpg'); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dcb7f', endColorstr='#4dcbbe',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */  
+  background-blend-mode: multiply;
+  background-size: cover; 
+}
+
+.button.funny{
+background: url('Abdou.png'), rgb(203,77,90); /* Old browsers */
+background: url('Abdou.png'), -moz-linear-gradient(-45deg, rgba(203,77,90,1) 37%, rgba(203,77,153,1) 100%); /* FF3.6-15 */
+background: url('Abdou.png'), -webkit-linear-gradient(-45deg, rgba(203,77,90,1) 37%,rgba(203,77,153,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: url('Abdou.png'), linear-gradient(135deg, rgba(203,77,90,1) 37%,rgba(203,77,153,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb4d5a', endColorstr='#cb4d99',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+background-size: cover; 
+background-blend-mode: normal;
 }
 
 
 
 
-@keyframes opacityButton{
+@keyframes opacityButtonT{
   0% {  background: rgb(77, 153, 203); /* Old browsers */
         background: -moz-linear-gradient(-135deg, rgba(77, 153, 203,1) 0%, rgba(77,203,190,1) 100%),url('running.gif'); /* FF3.6-15 */
         background: -webkit-linear-gradient(-135deg, rgba(77, 153, 203,1) 0%,rgba(77,203,190,1) 100%),url('running.gif'); /* Chrome10-25,Safari5.1-6 */
@@ -44,5 +56,31 @@
         opacity: .25;
         transform: scale(.8)
     }
+
+}
+
+@keyframes opacityButtonF{
+  0%{background: url('Abdou.gif'), rgb(203,77,90); /* Old browsers */
+    background: url('Abdou.gif'), -moz-linear-gradient(-45deg, rgba(203,77,90,1) 37%, rgba(203,77,153,1) 100%); /* FF3.6-15 */
+    background: url('Abdou.gif'), -webkit-linear-gradient(-45deg, rgba(203,77,90,1) 37%,rgba(203,77,153,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: url('Abdou.gif'), linear-gradient(135deg, rgba(203,77,90,1) 37%,rgba(203,77,153,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb4d5a', endColorstr='#cb4d99',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-size: cover; 
+    background-blend-mode: luminosity;
+    opacity: 1;
+    transform: scale(1)
+  }
+
+  100%{background: url('Abdou.gif'), rgb(203,77,90); /* Old browsers */
+    background: url('Abdou.gif'), -moz-linear-gradient(-45deg, rgba(203,77,90,1) 37%, rgba(203,77,153,1) 100%); /* FF3.6-15 */
+    background: url('Abdou.gif'), -webkit-linear-gradient(-45deg, rgba(203,77,90,1) 37%,rgba(203,77,153,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: url('Abdou.gif'), linear-gradient(135deg, rgba(203,77,90,1) 37%,rgba(203,77,153,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb4d5a', endColorstr='#cb4d99',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-size: cover; 
+    background-blend-mode: luminosity;
+    opacity: .25;
+    transform: scale(.8)
+  }
+
 
 }
