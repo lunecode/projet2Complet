@@ -9,7 +9,7 @@ import RandomData from './data/random_excuses';
 import TransportData from './data/transport_excuses'
 
 // Components
-import Excuse from './components/Excuse'
+import DetailsAlert from './components/DetailsAlert'
 import Button from './components/Button'
 import Radio from './components/Radio'
 
@@ -33,7 +33,7 @@ class App extends Component {
     // Loading animation
     const loader = document.querySelector('.scaling')
     const button = document.querySelector('.button')
-    const frame = document.querySelector('.frame')
+    const frame = document.querySelector('.container-DetailsAlert')
     loader.style.animation = 'scaling 2s ease-out forwards'
     button.style.animation = 'opacityButton 1.2s ease-in alternate infinite'
     
@@ -88,8 +88,12 @@ class App extends Component {
       <div className={modifyBackground}>
         <div className='Layout'>
           <Button fonction={this.displayRandomExcuse} category={this.state.category} />
-          <Excuse excuse={this.state.excuse} />
           <Radio func={this.changeCategory} />
+          <DetailsAlert 
+            picture="https://pbs.twimg.com/profile_images/755026402475466752/4Fa09qRh_bigger.jpg"            
+            details= "Détails de l'incident"
+            excuse={this.state.excuse}
+            />
         </div>
       </div>
     );
@@ -98,7 +102,7 @@ class App extends Component {
 
 
 
-
+  
 
 
 export default App;

@@ -1,0 +1,23 @@
+.container-DetailsAlert{
+margin: 0 auto;
+display: none;
+
+}
+
+
+.divDetails{
+    border: solid 1px green;
+    height: 35vh;
+    width: 50%;
+    margin: 30px auto;
+    display: relative;
+
+}
+
+.picture{
+    display: absolute;
+    width: 100px;
+
+
+}
+
