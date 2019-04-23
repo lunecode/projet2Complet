@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './DetailsAlert.css'
+import Excuse from './Excuse'
 
 class DetailsAlert extends Component {
     render() {
@@ -10,6 +11,7 @@ class DetailsAlert extends Component {
              <img src={this.props.picture} alt="RER D"/>
             </div>
              <p className="details">{this.props.details}</p>
+             <Excuse excuse={this.props.excuse} /> 
 
             </div>
         </div>
