@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3031;
 
 const app = express();
 
+// Call in Twitter package
 const Twitter = require("twitter");
 
 const client = new Twitter({
