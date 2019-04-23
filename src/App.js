@@ -12,6 +12,7 @@ import TransportData from './data/transport_excuses'
 import DetailsAlert from './components/DetailsAlert'
 import Button from './components/Button'
 import Radio from './components/Radio'
+import DisplayComponent from './components/DisplayComponent'
 
 class App extends Component {
 
@@ -34,7 +35,7 @@ class App extends Component {
     const loader = document.querySelector('.scaling')
     const buttonT = document.querySelector('.button.transport')
     const buttonF = document.querySelector('button.funny')
-    const frame = document.querySelector('.container-DetailsAlert')
+    const frame = document.querySelector('.DisplayComponent')
     loader.style.animation = 'scaling 2s ease-out forwards'
     
 
@@ -100,11 +101,7 @@ class App extends Component {
         <div className='Layout'>
           <Button fonction={this.displayRandomExcuse} category={this.state.category} />
           <Radio func={this.changeCategory} />
-          <DetailsAlert 
-            picture="https://pbs.twimg.com/profile_images/755026402475466752/4Fa09qRh_bigger.jpg"            
-            details= "Détails de l'incident"
-            excuse={this.state.excuse}
-            />
+          <DisplayComponent dataExcuse={this.state.excuse}/>
         </div>
       </div>
     );

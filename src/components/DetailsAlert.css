@@ -1,15 +1,15 @@
 .container-DetailsAlert{
 margin: 0 auto;
-display: none;
+display: flex;
+width: 100%;
 
 }
 
 
 .divDetails{
     border: solid 1px green;
-    height: 35vh;
-    width: 50%;
-    margin: 30px auto;
+    height: 30vh;
+    width: 100%;
     display: relative;
 
 }
