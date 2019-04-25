@@ -4,12 +4,12 @@ import Excuse from './Excuse'
 import DetailsAlert from './DetailsAlert'
 
 
-const DisplayComponent = ({dataExcuse}) => {
+const DisplayComponent = ({dataExcuse, dataLogo}) => {
 
     return (
         <div className='DisplayComponent'>
             <DetailsAlert 
-            picture="https://pbs.twimg.com/profile_images/755026402475466752/4Fa09qRh_bigger.jpg"            
+            picture={dataLogo}      
             details= "Détails de l'incident"
             excuse={dataExcuse}
             />
