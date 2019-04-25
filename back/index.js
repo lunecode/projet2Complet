@@ -65,8 +65,8 @@ for (let i = 0; i < allLines.length; i++) {
       // result.push(
         tweets.filter(
           tweet => (tweet.full_text.match(/ralenti|interrompu|perturbé/i)) 
-            && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux/i)) )
-            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(6, 'hours'))
+            && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux|hier/i)) )
+            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(3, 'hours'))
         ).map(tweet => {
 
           // Formating time with Moment.js

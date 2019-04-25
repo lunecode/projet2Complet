@@ -20,7 +20,8 @@ class App extends Component {
     category: "transport",
     excuse_transport: "",
     transport_data: [],
-    transport_logo: ""
+    transport_logo: "",
+    transport_index: 0,
   };
 
   componentDidMount() {
@@ -74,18 +75,49 @@ class App extends Component {
         excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[0].issue + " sur le " + this.state.transport_data[0].line.name + " à cause " + this.state.transport_data[0].cause,
         transport_logo: this.state.transport_data[0].line.image
       })
-      
-      console.log(this.state.transport_data[0])
-      console.log(this.state.transport_data[0].line.name)
-      console.log(this.state.transport_data[0].line.image)
-
-
 
     }, 2400);
   };
 
+  toNext = () => {
+    if (this.state.transport_index < this.state.transport_data.length - 1) {
+      // Removes inactive style on left arrow
+      document.querySelector(".left-arrow").classList.remove("inactive")
+
+      this.setState(prevState => ({
+        transport_index: prevState.transport_index + 1,
+        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[prevState.transport_index + 1].issue + " sur le " + this.state.transport_data[prevState.transport_index + 1].line.name + " à cause " + this.state.transport_data[prevState.transport_index + 1].cause,
+        transport_logo: this.state.transport_data[prevState.transport_index + 1].line.image
+        }))
+
+    } else {
+      // Add inactive style on right arrow
+      document.querySelector(".right-arrow").classList.add("inactive")
+    }
+
+  }
+
+  toPrevious = () => {
+    if (this.state.transport_index > 0) {
+      // Removes inactive style on right arrow
+      document.querySelector(".right-arrow").classList.remove("inactive")
+
+      this.setState(prevState => ({
+        transport_index: prevState.transport_index - 1,
+        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[prevState.transport_index - 1].issue + " sur le " + this.state.transport_data[prevState.transport_index - 1].line.name + " à cause " + this.state.transport_data[prevState.transport_index - 1].cause,
+        transport_logo: this.state.transport_data[prevState.transport_index - 1].line.image
+        }))
+
+    } else {
+      // Add inactive style on left arrow
+      document.querySelector(".left-arrow").classList.add("inactive")
+    }
+  }
+
   render() {
+
     const modifyBackground = "background " + this.state.category;
+
     return (
       <div className={modifyBackground}>
         <div className="Layout">
@@ -94,7 +126,7 @@ class App extends Component {
             category={this.state.category}
           />
           <Radio func={this.changeCategory} />
-          <DisplayComponent dataExcuse={this.state.excuse_transport} dataLogo={this.state.transport_logo} />
+          <DisplayComponent dataExcuse={this.state.excuse_transport} dataLogo={this.state.transport_logo} toPrevious={this.toPrevious} toNext={this.toNext} />
         </div>
       </div>
     );
