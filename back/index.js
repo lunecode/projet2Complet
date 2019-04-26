@@ -65,8 +65,8 @@ for (let i = 0; i < allLines.length; i++) {
       // result.push(
         tweets.filter(
           tweet => (tweet.full_text.match(/ralenti|interrompu|perturbé/i)) 
-            && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux/i)) )
-            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(1, 'hours'))
+            && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux|hier/i)) )
+            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(3, 'hours'))
         ).map(tweet => {
 
           // Formating time with Moment.js
@@ -87,35 +87,45 @@ for (let i = 0; i < allLines.length; i++) {
 
           // Get issue in tweet string
           let issue = "";
+          let issueText = "";
           
           if (matchText(/ralenti/i)) {
-            issue = "ralentissement sur la ligne"
+            issue = "ralentissement";
+            issueText = "un ralentissement"
           } else if (matchText(/interrompu/i)) {
-            issue = "interruption du traffic"
+            issue = "interruption";
+            issueText = "une interruption du traffic"
           } else if (matchText(/perturbé/i)) {
-            issue = "perturbations"
+            issue = "perturbations";
+            issueText = "des perturbations"
           }
 
           // Get cause of issue in tweet string
           let cause = "";
           
           if (matchText(/bagage/i)) {
-            cause = "bagage oublié"
+            cause = "d'un bagage oublié"
           } else if (matchText(/signalisation/i)) {
-            cause = "panne de signalisation"
+            cause = "d'une panne de signalisation"
+          } else if (matchText(/alimentation/i)) {
+            cause = "d'une panne d'alimentation"
           } else if (matchText(/panne/i)) {
-            cause = "panne de train"
+            cause = "d'une panne de train"
           } else if (matchText(/sécurité/i)) {
-            cause = "mesures de sécurité"
+            cause = "de mesures de sécurité"
           } else if (matchText(/malaise/i)) {
-            cause = "malaise voyageur"
+            cause = "d'un malaise voyageur"
           } else if (matchText(/accident grave de personne|accident de personne|incident voyageur/i)) {
-            cause = "suicide sur la voie"
+            cause = "d'un suicide sur la voie"
           } else if (matchText(/personne sur les voies|personnes sur les voies/i)) {
-            cause = "personnes sur les voies"
+            cause = "de personnes sur les voies"
           } else if (matchText(/incident technique/i)) {
-            cause = "incident technique"
-          } 
+            cause = "d'un incident technique"
+          } else if (matchText(/alarme/i)) {
+            cause = "d'un signal d'alarme"
+          } else {
+            cause = "d'un incident"
+          }
           
           // Return an object with custom propreties from twitter API
           result.push(
@@ -128,13 +138,14 @@ for (let i = 0; i < allLines.length; i++) {
               },
               text: tweet.full_text,
               issue: issue,
+              issueText: issueText,
               cause: cause
             }
           )
 
           // Sort all problem objects from the most recent
           result.sort(compare) 
-
+            console.log(tweet)
         })
     } else {
       throw error;

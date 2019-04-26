@@ -14,3 +14,24 @@
     position: relative;
     top: 70px;
 }
+
+.left-arrow {
+    display: block;
+    position: absolute;
+    font-size: 1.5em;
+    left: 10px;
+    top: 50%;
+}
+
+.right-arrow {
+    display: block;
+    position: absolute;
+    font-size: 1.5em;
+    right: 10px;
+    top: 50%;
+}
+
+.inactive {
+    display: none;
+    /* opacity: 0.4; */
+}
