@@ -12,7 +12,7 @@ import TransportData from "./data/transport_excuses";
 import DetailsAlert from "./components/DetailsAlert";
 import Button from "./components/Button";
 import Radio from "./components/Radio";
-import DisplayComponent from "./components/DisplayComponent";
+import CardComponent from "./components/CardComponent";
 
 class App extends Component {
   // Declare App states
@@ -22,6 +22,9 @@ class App extends Component {
     transport_data: [],
     transport_logo: "",
     transport_index: 0,
+    transport_last_time: "",
+    transport_time: "",
+    transport_issue: ""
   };
 
   componentDidMount() {
@@ -47,7 +50,8 @@ class App extends Component {
     const buttonT = document.querySelector(".button.transport");
     const buttonF = document.querySelector("button.funny");
     const frame = document.querySelector(".DisplayComponent");
-    const leftArrow = document.querySelector(".left-arrow")
+    const leftArrow = document.querySelector(".left-arrow");
+
     loader.style.animation = "scaling 2s ease-out forwards";
 
     switch (this.state.category) {
@@ -75,8 +79,11 @@ class App extends Component {
       leftArrow.classList.add("inactive")
 
       this.setState({
-        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[0].issue + " sur le " + this.state.transport_data[0].line.name + " à cause " + this.state.transport_data[0].cause,
-        transport_logo: this.state.transport_data[0].line.image
+        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[0].issueText + " sur le " + this.state.transport_data[0].line.name + " à cause " + this.state.transport_data[0].cause,
+        transport_logo: this.state.transport_data[0].line.image,
+        transport_last_time: this.state.transport_data[0].last_time,
+        transport_time: this.state.transport_data[0].time,
+        transport_issue: this.state.transport_data[0].issue
       })
 
     }, 2400);
@@ -85,7 +92,7 @@ class App extends Component {
   toNextCard = () => {
     const leftArrow = document.querySelector(".left-arrow")
     const rightArrow = document.querySelector(".right-arrow")
-    
+
     if (this.state.transport_index < this.state.transport_data.length - 1) {
       // Removes inactive style on left arrow
       leftArrow.classList.remove("inactive")
@@ -99,8 +106,11 @@ class App extends Component {
       // Updating card info relatively to the previous card info by adding 1 on index
       this.setState(prevState => ({
         transport_index: prevState.transport_index + 1,
-        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[prevState.transport_index + 1].issue + " sur le " + this.state.transport_data[prevState.transport_index + 1].line.name + " à cause " + this.state.transport_data[prevState.transport_index + 1].cause,
-        transport_logo: this.state.transport_data[prevState.transport_index + 1].line.image
+        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[prevState.transport_index + 1].issueText + " sur le " + this.state.transport_data[prevState.transport_index + 1].line.name + " à cause " + this.state.transport_data[prevState.transport_index + 1].cause,
+        transport_logo: this.state.transport_data[prevState.transport_index + 1].line.image,
+        transport_last_time: this.state.transport_data[prevState.transport_index + 1].last_time,
+        transport_time: this.state.transport_data[prevState.transport_index + 1].time,
+        transport_issue: this.state.transport_data[prevState.transport_index + 1].issue
         }))
         console.log(this.state.transport_index)
     } 
@@ -124,8 +134,11 @@ class App extends Component {
       // Updating card info relatively to the previous card info by substracting 1 on index
       this.setState(prevState => ({
         transport_index: prevState.transport_index - 1,
-        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[prevState.transport_index - 1].issue + " sur le " + this.state.transport_data[prevState.transport_index - 1].line.name + " à cause " + this.state.transport_data[prevState.transport_index - 1].cause,
-        transport_logo: this.state.transport_data[prevState.transport_index - 1].line.image
+        excuse_transport: "Désolé je vais être en retard, il y a " + this.state.transport_data[prevState.transport_index - 1].issueText + " sur le " + this.state.transport_data[prevState.transport_index - 1].line.name + " à cause " + this.state.transport_data[prevState.transport_index - 1].cause,
+        transport_logo: this.state.transport_data[prevState.transport_index - 1].line.image,
+        transport_last_time: this.state.transport_data[prevState.transport_index - 1].last_time,
+        transport_time: this.state.transport_data[prevState.transport_index - 1].time,
+        transport_issue: this.state.transport_data[prevState.transport_index - 1].issue
         }))
     }
   }
@@ -142,7 +155,15 @@ class App extends Component {
             category={this.state.category}
           />
           <Radio func={this.changeCategory} />
-          <DisplayComponent dataExcuse={this.state.excuse_transport} dataLogo={this.state.transport_logo} toPrevious={this.toPreviousCard} toNext={this.toNextCard}/>
+          <CardComponent
+            dataExcuse={this.state.excuse_transport}
+            dataLogo={this.state.transport_logo}
+            dataLastTime={this.state.transport_last_time}
+            dataTime={this.state.transport_time}
+            dataIssue={this.state.transport_issue}
+            toPrevious={this.toPreviousCard}
+            toNext={this.toNextCard}
+          />
         </div>
       </div>
     );

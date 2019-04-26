@@ -66,7 +66,7 @@ for (let i = 0; i < allLines.length; i++) {
         tweets.filter(
           tweet => (tweet.full_text.match(/ralenti|interrompu|perturbé/i)) 
             && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux|hier/i)) )
-            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(1, 'hours'))
+            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(3, 'hours'))
         ).map(tweet => {
 
           // Formating time with Moment.js
@@ -87,13 +87,17 @@ for (let i = 0; i < allLines.length; i++) {
 
           // Get issue in tweet string
           let issue = "";
+          let issueText = "";
           
           if (matchText(/ralenti/i)) {
-            issue = "un ralentissement"
+            issue = "ralentissement";
+            issueText = "un ralentissement"
           } else if (matchText(/interrompu/i)) {
-            issue = "une interruption du traffic"
+            issue = "interruption";
+            issueText = "une interruption du traffic"
           } else if (matchText(/perturbé/i)) {
-            issue = "des perturbations"
+            issue = "perturbations";
+            issueText = "des perturbations"
           }
 
           // Get cause of issue in tweet string
@@ -134,6 +138,7 @@ for (let i = 0; i < allLines.length; i++) {
               },
               text: tweet.full_text,
               issue: issue,
+              issueText: issueText,
               cause: cause
             }
           )
