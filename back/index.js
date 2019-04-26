@@ -66,7 +66,7 @@ for (let i = 0; i < allLines.length; i++) {
         tweets.filter(
           tweet => (tweet.full_text.match(/ralenti|interrompu|perturbé/i)) 
             && !( (tweet.full_text.match(/fin des ralentissements|fin de l'incident|travaux|hier/i)) )
-            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(3, 'hours'))
+            && moment(new Date(tweet.created_at)).isAfter(moment().subtract(1, 'hours'))
         ).map(tweet => {
 
           // Formating time with Moment.js
@@ -103,6 +103,8 @@ for (let i = 0; i < allLines.length; i++) {
             cause = "d'un bagage oublié"
           } else if (matchText(/signalisation/i)) {
             cause = "d'une panne de signalisation"
+          } else if (matchText(/alimentation/i)) {
+            cause = "d'une panne d'alimentation"
           } else if (matchText(/panne/i)) {
             cause = "d'une panne de train"
           } else if (matchText(/sécurité/i)) {
@@ -115,6 +117,8 @@ for (let i = 0; i < allLines.length; i++) {
             cause = "de personnes sur les voies"
           } else if (matchText(/incident technique/i)) {
             cause = "d'un incident technique"
+          } else if (matchText(/alarme/i)) {
+            cause = "d'un signal d'alarme"
           } else {
             cause = "d'un incident"
           }

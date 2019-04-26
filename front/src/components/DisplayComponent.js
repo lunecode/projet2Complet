@@ -3,7 +3,7 @@ import "./DisplayComponent.css";
 import Excuse from "./Excuse";
 import DetailsAlert from "./DetailsAlert";
 
-  const DisplayComponent = ({dataExcuse, dataLogo, toPrevious, toNext}) => {
+  const DisplayComponent = ({dataExcuse, dataLogo, toPrevious, toNext, inactive}) => {
     return (
       <div className="DisplayComponent">
         <DetailsAlert
@@ -12,8 +12,8 @@ import DetailsAlert from "./DetailsAlert";
           excuse={dataExcuse}
         />
         <button className="sendButton">SEND IT</button>
-        <i className="fas fa-chevron-left left-arrow" onClick={toPrevious} />
-        <i className="fas fa-chevron-right right-arrow" onClick={toNext} />
+        <i className={"fas fa-chevron-left left-arrow"} onClick={toPrevious} />
+        <i className={"fas fa-chevron-right right-arrow"} onClick={toNext} />
       </div>
     );
 }
