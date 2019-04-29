@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+
+.loading-text-wrap {
+    margin-top: -85px;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 90%;
+  font-weight: bold;
+  height: 2em;
+  align-items: center;
+  justify-content: start;
+  text-align: center;
+  border-right: .05em solid #555;
+  /* The typwriter cursor */
+   white-space: nowrap; /* Keeps the content on a single line */
+   overflow: hidden; /* Ensures the content is not revealed until the animation */
+  letter-spacing: .1em; /* Adjust as needed */
+  animation: 
+    typing 2s steps(30, end),
+    blink-caret .5s step-end 4 forwards;
+    padding: 0;
+  margin-left: 20%;
+}
+
+.text-begin {
+  /* For increasing performance 
+                       ID/Class should've been used. 
+                       For a small demo 
+                       it's okaish for now */
+  animation: showup 1.5s forwards;
+  margin-right: 5px;
+  /* width: 100%; */
+  text-align: right;
+}
+
+.text-end {
+  display: block;
+  visibility: hidden;
+  animation-duration: 2s;
+  animation-delay: 2.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  min-width: 100px;
+  text-align: left;
+  /* Anim */
+  animation-name: anim;
+  visibility: visible;
+}
+.item-1,
+.item-2,
+.item-3 {
+  display: block;
+  visibility: hidden;
+  animation-duration: 5s;
+  animation-delay: 2.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  min-width: 100%;
+  text-align: left;
+  /* margin-left: 5px; */
+}
+
+.item-1 {
+  animation-name: anim-3;
+  visibility: visible;
+}
+
+.item-2 {
+  animation-name: anim-1;
+}
+
+.item-3 {
+  animation-name: anim-2;
+}
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 65%}
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #555 }
+}
+
+@keyframes showup {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slidein {
+    0% {
+      margin-left: -800px;
+    }
+    20% {
+      margin-left: -800px;
+    }
+    35% {
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 0px;
+    }
+  }
+  
+  @keyframes reveal {
+    0% {
+      opacity: 0;
+      width: 0px;
+    }
+    20% {
+      opacity: 1;
+      width: 0px;
+    }
+    30% {
+      width: 355px;
+    }
+    100% {
+      width: 355px;
+    }
+  }
+
+  @keyframes anim {
+    0% {
+      visibility: visible;
+      transform: translate(0, -20px);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, 20px);
+      opacity: 0;
+    }
+  }

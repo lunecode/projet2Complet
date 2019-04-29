@@ -2,6 +2,7 @@
 import React from 'react';
 import './Button.css'
 import Loader from './Loader'
+import LoaderText from './LoaderText'
 
 const Button = ({fonction, category}) => {
    const modifyButton = 'button ' + category
