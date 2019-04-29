@@ -126,7 +126,9 @@ const getTweetsData = () => {
               cause = "d'un signal d'alarme"
             } else if (matchText(/manifestation/i)) {
               cause = "d'une manifestation"
-            }else {
+            } else if (matchText(/fermeture de porte/i)) {
+              cause = "d'un problème de fermeture de porte"
+            } else {
               cause = "d'un incident"
             }
             

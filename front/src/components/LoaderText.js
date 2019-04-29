@@ -5,14 +5,14 @@ import "./LoaderText.css";
 class LoaderText extends Component {
 
   state = {
-    text: "problèmes de transport"
+    text: "des transports"
   }
   
   componentDidMount() {
     const dynamicText = [
-      "accidents de la route",
-      "conditions de météo",
-      "problèmes de transport"
+      "des transports",
+      "de la météo",
+      "du traffic"
     ];
     let count = 0;
     const test = () => {
@@ -35,7 +35,7 @@ class LoaderText extends Component {
   render() {
     return (
       <div className="loading-text-wrap">
-        <p className="text-begin">Analyse des</p>
+        <p className="text-begin">Analyse</p>
         <p className="text-end">{this.state.text}</p>
       </div>
     );
