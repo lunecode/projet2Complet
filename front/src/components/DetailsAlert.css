@@ -1,23 +1,10 @@
-.container-DetailsAlert{
-margin: 0 auto;
-display: flex;
-width: 100%;
-
+.divDetails > p {
+    margin: 5px;
 }
-
 
 .divDetails{
-    border: solid 1px green;
-    height: 30vh;
-    width: 100%;
-    display: relative;
-
+    margin: 5px;
 }
 
-.picture{
-    display: absolute;
-    width: 100px;
 
-
-}
 

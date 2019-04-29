@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import './CardCTA.css'
+import React, { Component } from "react";
+import "./CardCTA.css";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
-class CardCTA extends Component {
-    render() {
-      return (
-        <div>
-            <button className='sendButton'>{this.props.sendButton}</button>
-        </div>
-        ); 
-    }
-}
+const CardCTA = ({ dataCopy }) => {
+  return (
+    <div>
+      <CopyToClipboard text={dataCopy}>
+        <button className="sendButton">Copy</button>
+      </CopyToClipboard>
+    </div>
+  );
+};
 
 export default CardCTA;

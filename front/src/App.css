@@ -42,3 +42,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb7f4d', end
   align-items: center;
   text-align: center;
 }
+
+.Cards {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}

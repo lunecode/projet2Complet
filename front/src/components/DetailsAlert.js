@@ -11,7 +11,6 @@ class DetailsAlert extends Component {
           </div>
           <p className="details">{this.props.details}</p>
           <p>Problème: {this.props.issue}</p>
-          <p>{this.props.time}</p>
           <p>{this.props.lastTime}</p>
         </div>
       </div>

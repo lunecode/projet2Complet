@@ -1,37 +1,73 @@
-.DisplayComponent{
-    width: 95%;
-    height: 40vh;
+/*  card > margin > flex  WIP */
+.CardComponent{
+    width: 90%;
+    height: 87vh;
     border: 2px black solid;
-    display: none;
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 25px;
-    background-color: rgba(185, 185, 185, .55)
+    background-color: white;
+    box-shadow: 5px 6px 22px black;
 }
 
-.sendButton{
+/* background color > WIP */
+.logoTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    border-bottom: 2px black solid;
+    box-shadow: 0px 2px 18px grey;
+    border-radius: 20px 20px 0 0;
+    background-color: rgba(73,203,130, 0.72)!important;
+    padding: 0.5em 2.5em 0.5em 1em;
+    text-align: center;
+}
+
+.logoTitleContainer img {
+    width: 50px;
+    height: 50px;
+}
+
+.logoTitleContainer h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Card-CTA {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin: 0;
+}
+
+/* boutton > margin > flex> WIP */
+.sendButton {
+    margin: 2rem;
+    background-color: #4dcbbe;
+    box-shadow: 4px 4px 20px black;
     border: 2px black solid;
-    border-radius: 25px;
-    position: relative;
-    top: 70px;
+    border-radius: 20px;
+    padding: 20px 40px 20px 40px;
 }
 
 .left-arrow {
-    display: block;
-    position: absolute;
     font-size: 1.5em;
-    left: 10px;
-    top: 50%;
+    margin-right: auto;
+    margin-left: 20px;
 }
 
 .right-arrow {
-    display: block;
-    position: absolute;
     font-size: 1.5em;
-    right: 10px;
-    top: 50%;
+    margin-left: auto;
+    margin-right: 20px;
+
 }
 
 .inactive {
-    display: none;
-    /* opacity: 0.4; */
+    /* display: none; */
+    opacity: 0.2;
 }
