@@ -76,6 +76,18 @@ class App extends Component {
     }
     // Set a timer before displaying the excuse
     setTimeout(() => {
+
+      switch (this.state.category) {
+        case "transport":
+          buttonT.style.animation = "none";
+          break;
+        case "funny":
+          buttonF.style.animation = "none";
+          break;
+  
+        default:
+          console.log("test");
+      }
       cards.style.display = "flex";
       home.style.display = "none";
       
@@ -103,7 +115,11 @@ class App extends Component {
           idRandomzized = randomize(RandomData[1].funny);
           // Update excuse state with randomized index
           this.setState({
-            excuse: RandomData[1].funny[idRandomzized].excuse
+            excuse: RandomData[1].funny[idRandomzized].excuse,
+            transport_logo: "",
+            transport_last_time: "",
+            transport_time: "",
+            transport_issue: ""
           })
           break;
   
@@ -181,6 +197,14 @@ class App extends Component {
     }
   }
 
+  goBack = () => {
+    const cards = document.querySelector(".Cards");
+    const home = document.querySelector(".Home");
+
+    cards.style.display = "none";
+    home.style.display = "flex";
+  }
+
   render() {
 
     const modifyBackground = "background " + this.state.category;
@@ -206,6 +230,7 @@ class App extends Component {
               dataIssue={this.state.transport_issue}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
+              goBack={this.goBack}
             />
           </div>
         </div>
