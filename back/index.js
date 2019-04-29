@@ -137,6 +137,8 @@ const getTweetsData = () => {
 
             if (tweet.user.name === "RER B" || tweet.user.name === "RER A") {
               userName = tweet.user.name;
+            } else if (tweet.user.name.includes("RER C")) {
+              userName = (tweet.user.name).slice(0, -10);
             } else {
               userName = (tweet.user.name).slice(0, -5);
             }
