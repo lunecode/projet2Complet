@@ -25,7 +25,8 @@ class App extends Component {
     transport_index: 0,
     transport_last_time: "",
     transport_time: "",
-    transport_issue: ""
+    transport_issue: "",
+   
   };
 
   componentDidMount() {
@@ -170,6 +171,7 @@ class App extends Component {
     }
     
   }
+ 
 
   toPreviousCard = () => {
     const leftArrow = document.querySelector(".left-arrow")
@@ -203,6 +205,7 @@ class App extends Component {
 
     cards.style.display = "none";
     home.style.display = "flex";
+    
   }
 
   render() {
