@@ -5,17 +5,11 @@ import Excuse from "./Excuse";
 import DetailsAlert from "./DetailsAlert";
 import CardCTA from './CardCTA'
 
-
-
 class CardComponent extends Component {
   state = {
     open: false,
     comp: 'cardClose'
-  };
-  // componentWillUnmount() {
-  //   this.setState({open: false})
-  // }
-
+  }
 
   toToggle = () => {
     this.setState({ open: !this.state.open })
@@ -27,17 +21,20 @@ class CardComponent extends Component {
     console.log(this.state.comp)
   }
 
-
   render() {
     return (
       <div className='cardComponent'>
+
         <div className='headerCard' onClick={this.toToggle}>
+
           <img
             src="https://www.retif.eu/media/image/400x/picto-028-pole-de-correspondance-ou-gare-routiere-pvc-fond-blanc-125x125mm_01.jpg"
             alt="title img"
           />
           <h2>{this.props.dataTitle}</h2>
+
         </div>
+
 
         <Collapse isOpened={this.state.open} className="collapse">
 
@@ -48,19 +45,23 @@ class CardComponent extends Component {
             time={this.props.dataTime}
             issue={this.props.dataIssue}
           />
+
           <Excuse excuse={this.props.dataExcuse} />
+
           <div className="Card-CTA">
             <i
               className={"fas fa-chevron-left left-arrow"}
               onClick={this.props.toPrevious}
             />
+
             <CardCTA dataCopy={this.props.dataExcuse} />
+
             <i
               className={"fas fa-chevron-right right-arrow"}
               onClick={this.props.toNext}
             />
-          </div>
 
+          </div>
         </Collapse>
       </div>
 
@@ -68,7 +69,6 @@ class CardComponent extends Component {
   }
 }
 
-    
 //     render () {
 //     return (
     
@@ -114,5 +114,4 @@ class CardComponent extends Component {
 //     );
 //     }
 // }
-
 export default CardComponent;
