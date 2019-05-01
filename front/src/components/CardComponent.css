@@ -1,40 +1,19 @@
-/*  card > margin > flex  WIP */
-.CardComponent{
-    width: 90%;
-    height: 87vh;
-    border: 2px black solid;
+.headerCard {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 25px;
-    background-color: white;
-    box-shadow: 5px 6px 22px black;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid black;
+    border-radius: 20px;
 }
 
-/* background color > WIP */
-.logoTitleContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    display: flex;
-    align-items: center;
-    /* justify-content: space-around; */
-    border-bottom: 2px black solid;
-    box-shadow: 0px 2px 18px grey;
-    border-radius: 20px 20px 0 0;
-    background-color: rgba(73,203,130, 0.72)!important;
-    padding: 0.5em 2.5em 0.5em 1em;
-    text-align: center;
-}
-
-.logoTitleContainer img {
+.headerCard img {
     width: 50px;
     height: 50px;
 }
 
-.logoTitleContainer h2 {
-    margin-left: auto;
-    margin-right: auto;
+.cardComponent{
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 .Card-CTA {
@@ -65,19 +44,6 @@
     margin-left: auto;
     margin-right: 20px;
 
-}
-
-.inactive {
-    /* display: none; */
-    opacity: 0.2;
-}
-
-.CardWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    width: 100%;
 }
 
 .back-btn {
