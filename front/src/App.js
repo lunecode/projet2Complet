@@ -29,16 +29,62 @@ class App extends Component {
    
   };
 
+  //Traffic state
+  state = {
+    category: "traffic",
+    excuse: "",
+    traffic_data: []
+  }
+
   componentDidMount() {
     fetch("/api/transport")
       .then(response => response.json())
       .then(data => {
         this.setState({
-          transport_data: data
+          transport_data: data,
+          
         });
       });
+
+    //Traffic data
+    let trafficData = []
+
+    //Fetch traffic API
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/'
+    const url = 'http://dev.virtualearth.net/REST/v1/Traffic/Incidents/48.799206,2.257003,48.911702,2.427980?key=AkmwWft6jf42P1wcoVkMwpvQ3t2k1eiXe-YNTjC--9CgwR1Jd1F60UovK6VLVNDF'
+    fetch(proxyurl + url)
+    .then(response => response.json())
+    .then(response => {
+
+    // Sort newest to oldest
+      const compare =  (a,b) => {
+        if (a.lastModified > b.lastModified)
+        return -1;
+        if (a.lastModified< b.lastModified)
+        return 1;
+        return 0;
+      }
+      response.resourceSets[0].resources.sort(compare)
+
+      //Map & formated time
+      response.resourceSets[0].resources.map( item => {
+        const formatedDate =  Number((item.lastModified).slice(6, -2))
+  
+      //Push of traffic data
+        trafficData.push({
+          date: formatedDate,
+          cause : item.description
+        })
+      
+      //State of traffic data
+        this.setState({
+          traffic_data: trafficData
+        })
+      })
+    })
   }
 
+  
   // Change excuses category
   changeCategory = event => {
     this.setState({
