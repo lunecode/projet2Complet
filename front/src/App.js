@@ -20,7 +20,10 @@ class App extends Component {
   state = {
     category: "transport",
     excuse: "",
+    // API DATA
     transport_data: [],
+    weather_data: [],
+    // Transport states
     transport_logo: "",
     transport_index: 0,
     transport_last_time: "",
@@ -28,6 +31,23 @@ class App extends Component {
     transport_issue: "",
    
   };
+
+  // Request Weather API
+  getweatherExcuse_data = () => {
+    // Fetch info
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Paris&lang=fr&units=metric&appid=f3c5761a4b0770555f6e829dd7c70ac5")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ weather_data: res });
+        this.setState({ weatherIcon: this.getIcon(res.weather[0].icon) });
+        this.setState({ weatherDesc: res.weather[0].description });
+      });
+  };
+
+   // Get Icon from weather API
+   getIcon(icon) {
+    return `//openweathermap.org/img/w/${ icon }.png`;
+  }
 
   componentDidMount() {
     fetch("/api/transport")
@@ -37,6 +57,7 @@ class App extends Component {
           transport_data: data
         });
       });
+      this.getweatherExcuse_data();
   }
 
   // Change excuses category
