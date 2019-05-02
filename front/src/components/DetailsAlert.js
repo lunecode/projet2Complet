@@ -10,8 +10,9 @@ class DetailsAlert extends Component {
             <img src={this.props.picture} alt="train line logo" />
           </div>
           <p className="details">{this.props.details}</p>
-          <p>Problème: {this.props.issue}</p>
+          <p>{this.props.issue}</p>
           <p>{this.props.lastTime}</p>
+          <p>{this.props.time}</p>
         </div>
       </div>
     );

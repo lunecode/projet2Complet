@@ -21,9 +21,13 @@ class CardComponent extends Component {
     console.log(this.state.comp)
   }
 
+  
   render() {
+
+    const cardClasses = 'cardComponent ' + this.props.dataTitle;
+
     return (
-      <div className='cardComponent'>
+      <div className={cardClasses}>
 
         <div className='headerCard' onClick={this.toToggle}>
 
