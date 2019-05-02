@@ -39,6 +39,10 @@
     margin-left: 20px;
 }
 
+.inactive{
+    opacity:.6;
+}
+
 .right-arrow {
     font-size: 1.5em;
     margin-left: auto;
@@ -61,3 +65,4 @@
 .back-logo {
     margin-right: 0.5em;
 }
+
