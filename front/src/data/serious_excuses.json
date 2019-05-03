@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "excuse": "J'ai dû emmener mon fils chez le docteur ce matin",
+        "issue": "familial",
+        "image": "https://image.flaticon.com/icons/svg/1754/1754091.svg"
+    },
+    {
+        "id": 2,
+        "excuse": "Ma clef c'est coincé dans ma porte et j'ai du appelé le serrurier",
+        "issue": "serrure",
+        "image": "https://image.flaticon.com/icons/svg/179/179543.svg"
+    },
+    {
+        "id": 3,
+        "excuse": "Je me suis fais contrôlé par la police sur le chemin",
+        "issue": "contrôle de police",
+        "image": "https://image.flaticon.com/icons/svg/1750/1750557.svg"
+    },
+    {
+        "id": 4,
+        "excuse": "Je me suis fais volé mon sac",
+        "issue": "vol",
+        "image": "https://image.flaticon.com/icons/svg/159/159462.svg"
+    },
+    {
+        "id": 5,
+        "excuse": "J'ai été témoin d'une aggression et j'ai dû faire un rapport à la police.",
+        "issue": "rapport de police",
+        "image": "https://image.flaticon.com/icons/svg/1750/1750557.svg"
+    }
+]

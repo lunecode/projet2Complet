@@ -5,7 +5,7 @@ import "./App.css";
 import "./components/Radio.css";
 
 // Data
-import RandomData from "./data/random_excuses";
+import SeriousData from "./data/serious_excuses";
 import FunnyData from "./data/funny_excuses";
 // Components
 import Button from "./components/Button";
@@ -24,6 +24,12 @@ class App extends Component {
     transport_data: [],
     traffic_data: [],
     funny_data: FunnyData,
+    serious_data: SeriousData,
+    // Serious states
+    serious_index: 0,
+    serious_image: "",
+    serious_excuse: "",
+    serious_issue: "",
     // Traffic states
     traffic_time: "",
     traffic_index: 0,
@@ -44,6 +50,7 @@ class App extends Component {
     transport_open: false,
     weather_open: false,
     traffic_open: false,
+    serious_open: false,
     open: false,
     comp: 'cardClose'
   };
@@ -139,6 +146,7 @@ class App extends Component {
 
     const leftArrowTransport = document.querySelector(".Transport .left-arrow");
     const leftArrowTraffic = document.querySelector(".Traffic .left-arrow");
+    const leftArrowSerieux = document.querySelector(".Serieux .left-arrow");
 
     const home = document.querySelector(".Home");
     const cards = document.querySelector(".Cards");
@@ -181,6 +189,7 @@ class App extends Component {
 
       leftArrowTransport.classList.add("inactive");
       leftArrowTraffic.classList.add("inactive");
+      leftArrowSerieux.classList.add("inactive");
       // 
       document.querySelector(".Meteo .right-arrow").style.visibility = "hidden";
       document.querySelector(".Meteo .left-arrow").style.visibility = "hidden";
@@ -191,6 +200,7 @@ class App extends Component {
           document.querySelector(".Meteo").style.display = "flex"
           document.querySelector(".Transport").style.display = "flex"
           document.querySelector(".Traffic").style.display = "flex"
+          document.querySelector(".Serieux").style.display = "flex"
           document.querySelector(".Insolite").style.display = "none"
         // Set States
           this.setState({
@@ -208,7 +218,11 @@ class App extends Component {
             transport_issue: this.state.transport_data[0].issue,
             // Set traffic states
             traffic_time: this.state.traffic_data[0].date,
-            traffic_issue: this.state.traffic_data[0].cause
+            traffic_issue: this.state.traffic_data[0].cause,
+            // Set serious states
+            serious_excuse: this.state.serious_data[0].excuse,
+            serious_image: this.state.serious_data[0].image,
+            serious_issue: this.state.serious_data[0].issue,
           });
 
           // Set state for weather 
@@ -252,6 +266,7 @@ class App extends Component {
           document.querySelector(".Meteo").style.display = "none"
           document.querySelector(".Transport").style.display = "none"
           document.querySelector(".Traffic").style.display = "none"
+          document.querySelector(".Serieux").style.display = "none"
           document.querySelector(".Insolite").style.display = "flex"
           // hide left arrow wg
           document.querySelector(".Insolite .left-arrow").style.visibility = "hidden";
@@ -291,6 +306,8 @@ class App extends Component {
       const rightArrowTransport = document.querySelector(".Transport .right-arrow");
       const leftArrowTraffic = document.querySelector(".Traffic .left-arrow");
       const rightArrowTraffic = document.querySelector(".Traffic .right-arrow");
+      const leftArrowSerieux = document.querySelector(".Serieux .left-arrow");
+      const rightArrowSerieux = document.querySelector(".Serieux .right-arrow");
       // Set different states depending on cards arrow click
       switch(e.target){
         case rightArrowTransport:
@@ -351,6 +368,27 @@ class App extends Component {
           console.log(this.state.traffic_index);
         }
         break;
+        case rightArrowSerieux:
+        if (this.state.serious_index < this.state.serious_data.length - 1) {
+          // Removes inactive style on left arrow
+          leftArrowSerieux.classList.remove("inactive");
+  
+          // Add inactive style on right arrow
+          // We have to length -2 instead of -1 because the index state is not updated yet at the moment the user clicks
+          if (this.state.serious_index === this.state.serious_data.length - 2) {
+            rightArrowSerieux.classList.add("inactive");
+          }
+  
+          // Updating card info relatively to the previous card info by adding 1 on index
+          this.setState(prevState => ({
+            serious_index: prevState.serious_index + 1,
+            serious_issue: this.state.serious_data[prevState.serious_index + 1].issue,
+            serious_image: this.state.serious_data[prevState.serious_index + 1].image,
+            serious_excuse: this.state.serious_data[prevState.serious_index + 1].excuse
+          }));
+          console.log(this.state.serious_index);
+        }
+        break;
         default:
         alert("problem")
       }
@@ -363,6 +401,8 @@ class App extends Component {
     const rightArrowTransport = document.querySelector(".Transport .right-arrow");
     const leftArrowTraffic = document.querySelector(".Traffic .left-arrow");
     const rightArrowTraffic = document.querySelector(".Traffic .right-arrow");
+    const leftArrowSerieux = document.querySelector(".Serieux .left-arrow");
+    const rightArrowSerieux = document.querySelector(".Serieux .right-arrow");
     switch(e.target) {
       case leftArrowTransport:
       if (this.state.transport_index > 0) {
@@ -418,6 +458,26 @@ class App extends Component {
         }));
       }
       break;
+      case leftArrowSerieux:
+      if (this.state.serious_index > 0) {
+        // Removes inactive style on right arrow
+        rightArrowSerieux.classList.remove("inactive");
+  
+        // Adds inactive style on right arrow
+        // We have to use the index 1 instead of 0 because the index state is not updated yet at the moment the user clicks
+        if (this.state.serious_index === 1) {
+          leftArrowSerieux.classList.add("inactive");
+        }
+  
+        // Updating card info relatively to the previous card info by substracting 1 on index
+        this.setState(prevState => ({
+          serious_index: prevState.serious_index - 1,
+          serious_issue: this.state.serious_data[prevState.serious_index - 1].issue,
+          serious_image: this.state.serious_data[prevState.serious_index - 1].image,
+          serious_excuse: this.state.serious_data[prevState.serious_index - 1].excuse
+        }));
+      }
+      break;
       default:
       alert("problem");
     }
@@ -453,74 +513,112 @@ class App extends Component {
     const traffic = document.querySelector(".Traffic .headerCard")
     const trafficImg = document.querySelector(".Traffic .headerCard img")
     const trafficTitle = document.querySelector(".Traffic .headerCard h2")
+    // Serious DOM
+    const serious = document.querySelector(".Serieux .headerCard")
+    const seriousImg = document.querySelector(".Serieux .headerCard img")
+    const seriousTitle = document.querySelector(".Serieux .headerCard h2")
 
     switch (e.target) {
       // Transport Card
       case transport:
-        this.setState(prevState => ({
-          transport_open: !prevState.transport_open,
-          weather_open: false,
-          traffic_open: false
-        }));
+      this.setState(prevState => ({
+        transport_open: !prevState.transport_open,
+        weather_open: false,
+        traffic_open: false,
+        serious_open: false
+      }));
         break;
       case transportTitle:
-        this.setState(prevState => ({
-          transport_open: !prevState.transport_open,
-          weather_open: false,
-          traffic_open: false
-        }));
+      this.setState(prevState => ({
+        transport_open: !prevState.transport_open,
+        weather_open: false,
+        traffic_open: false,
+        serious_open: false
+      }));
         break;
       case transportImg:
         this.setState(prevState => ({
           transport_open: !prevState.transport_open,
           weather_open: false,
-          traffic_open: false
+          traffic_open: false,
+          serious_open: false
         }));
         break;
       // Traffic Card
       case traffic:
-        this.setState(prevState => ({
-          traffic_open: !prevState.traffic_open,
-          transport_open: false,
-          weather_open: false
-        }));
+      this.setState(prevState => ({
+        traffic_open: !prevState.traffic_open,
+        transport_open: false,
+        weather_open: false,
+        serious_open: false
+      }));
         break;
       case trafficImg:
-        this.setState(prevState => ({
-          traffic_open: !prevState.traffic_open,
-          transport_open: false,
-          weather_open: false
-        }));
+      this.setState(prevState => ({
+        traffic_open: !prevState.traffic_open,
+        transport_open: false,
+        weather_open: false,
+        serious_open: false
+      }));
         break;
       case trafficTitle:
         this.setState(prevState => ({
           traffic_open: !prevState.traffic_open,
           transport_open: false,
-          weather_open: false
+          weather_open: false,
+          serious_open: false
         }));
         break;
       // Weather Card
       case weather:
-        this.setState(prevState => ({
-          weather_open: !prevState.weather_open,
-          transport_open: false,
-          traffic_open: false
-        }));
+      this.setState(prevState => ({
+        weather_open: !prevState.weather_open,
+        transport_open: false,
+        traffic_open: false,
+        serious_open: false
+      }));
         break;
       case weatherImg:
-        this.setState(prevState => ({
-          weather_open: !prevState.weather_open,
-          transport_open: false,
-          traffic_open: false
-        }));
+      this.setState(prevState => ({
+        weather_open: !prevState.weather_open,
+        transport_open: false,
+        traffic_open: false,
+        serious_open: false
+      }));
         break;
       case weatherTitle:
         this.setState(prevState => ({
           weather_open: !prevState.weather_open,
           transport_open: false,
-          traffic_open: false
+          traffic_open: false,
+          serious_open: false
         }));
         break;
+      // Serious Card
+      case serious:
+      this.setState(prevState => ({
+        weather_open: false,
+        transport_open: false,
+        traffic_open: false,
+        serious_open: !prevState.serious_open
+      }));
+      break;
+      case seriousImg:
+      this.setState(prevState => ({
+        serious_open: !prevState.serious_open,
+        weather_open: false,
+        transport_open: false,
+        traffic_open: false,
+      }));
+      break;
+      case seriousTitle:
+      this.setState(prevState => ({
+        serious_open: !prevState.serious_open,
+        weather_open: false,
+        transport_open: false,
+        traffic_open: false,
+      }));
+      break;
       default:
         alert("BUG");
     }
@@ -547,7 +645,9 @@ class App extends Component {
             </button>
             <CardComponent
               dataTitle={"Transport"}
-              titleImage={"https://image.flaticon.com/icons/svg/1185/1185517.svg"}
+              titleImage={
+                "https://image.flaticon.com/icons/svg/1185/1185517.svg"
+              }
               dataExcuse={this.state.transport_excuse}
               dataLogo={this.state.transport_logo}
               dataLastTime={this.state.transport_last_time}
@@ -561,7 +661,9 @@ class App extends Component {
             />
             <CardComponent
               dataTitle={"Meteo"}
-              titleImage={"https://image.flaticon.com/icons/svg/1146/1146868.svg"}
+              titleImage={
+                "https://image.flaticon.com/icons/svg/1146/1146868.svg"
+              }
               dataExcuse={this.state.weather_excuse}
               dataLogo={this.state.weather_icon}
               dataIssue={this.state.weather_desc}
@@ -573,7 +675,9 @@ class App extends Component {
             />
             <CardComponent
               dataTitle={"Traffic"}
-              titleImage={"https://image.flaticon.com/icons/svg/1683/1683859.svg"}
+              titleImage={
+                "https://image.flaticon.com/icons/svg/1683/1683859.svg"
+              }
               dataExcuse={"J'étais bloqué dans le traffic"}
               dataIssue={this.state.traffic_issue}
               dataLogo={this.state.traffic_logo}
@@ -582,6 +686,22 @@ class App extends Component {
               toNext={this.toNextCard}
               // Collapse Logic
               isOpen={this.state.traffic_open}
+              toToggle={this.toToggle}
+            />
+            <CardComponent
+              // Data
+              dataTitle={"Serieux"}
+              dataExcuse={this.state.serious_excuse}
+              dataLogo={this.state.serious_image}
+              dataIssue={"Problème: " + this.state.serious_issue}
+              titleImage={
+                "https://image.flaticon.com/icons/svg/312/312243.svg"
+              }
+              // Functionnalities
+              goBack={this.goBack}
+              toNext={this.toNextCard}
+              toPrevious={this.toPreviousCard}
+              isOpen={this.state.serious_open}
               toToggle={this.toToggle}
             />
             <CardFunny
