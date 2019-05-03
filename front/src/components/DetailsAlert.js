@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "./DetailsAlert.css";
+import Moment from 'react-moment';
+import 'moment-timezone';
+import 'moment/locale/fr';
 
 class DetailsAlert extends Component {
   render() {
@@ -12,7 +15,7 @@ class DetailsAlert extends Component {
           <p className="details">{this.props.details}</p>
           <p>{this.props.issue}</p>
           <p>{this.props.lastTime}</p>
-          <p>{this.props.time}</p>
+         <Moment fromNow ago locale="fr"><p>{this.props.time}</p></Moment>
         </div>
       </div>
     );
