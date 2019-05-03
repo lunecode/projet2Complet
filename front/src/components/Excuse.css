@@ -29,13 +29,3 @@
   background-color: black;
   color: white;
 }
-
-.excuse { 
-  display: flex; 
-  align-items: center; 
-} 
-
-.excuse-scroll { 
-  max-height: 100%; 
-  overflow: scroll; 
-}

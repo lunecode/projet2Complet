@@ -24,7 +24,7 @@ class CardComponent extends Component {
   
   render() {
 
-    const cardClasses = 'cardComponent ' + this.props.dataTitle;
+    const cardClasses = this.props.dataTitle + ' cardComponent';
 
     return (
       <div className={cardClasses}>
