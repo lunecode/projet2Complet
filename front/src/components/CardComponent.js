@@ -6,21 +6,6 @@ import DetailsAlert from "./DetailsAlert";
 import CardCTA from './CardCTA'
 
 class CardComponent extends Component {
-  state = {
-    open: false,
-    comp: 'cardClose'
-  }
-
-  toToggle = () => {
-    this.setState({ open: !this.state.open })
-    if (this.state.comp === 'cardClose') {
-      this.setState({ comp: 'cardOpen' })
-    } else {
-      this.setState({ comp: 'cardClose' })
-    }
-    console.log(this.state.comp)
-  }
-
   
   render() {
 
@@ -29,7 +14,7 @@ class CardComponent extends Component {
     return (
       <div className={cardClasses}>
 
-        <div className='headerCard' onClick={this.toToggle}>
+        <div className='headerCard' onClick={this.props.toToggle}>
 
           <img
             src={this.props.titleImage}
@@ -40,7 +25,7 @@ class CardComponent extends Component {
         </div>
 
 
-        <Collapse isOpened={this.state.open} className="collapse">
+        <Collapse isOpened={this.props.isOpen} className="collapse">
 
           <DetailsAlert
             picture={this.props.dataLogo}

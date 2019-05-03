@@ -27,6 +27,7 @@ class App extends Component {
     // Traffic states
     traffic_time: "",
     traffic_index: 0,
+    traffic_logo: "https://image.flaticon.com/icons/svg/1476/1476798.svg",
     // Transport states
     transport_logo: "",
     transport_index: 0,
@@ -38,7 +39,13 @@ class App extends Component {
     weather_desc: "",
     // Funny states:
     funny_excuse: "",
-    funny_image: ""
+    funny_image: "",
+    // Collaspe states
+    transport_open: false,
+    weather_open: false,
+    traffic_open: false,
+    open: false,
+    comp: 'cardClose'
   };
 
   // Request Weather API
@@ -58,16 +65,18 @@ class App extends Component {
   getIcon(icon) {
     return `//openweathermap.org/img/w/${icon}.png`;
   }
-
-  componentDidMount() {
+  // Request Transport API
+  getTranportData() {
     fetch("/api/transport")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          transport_data: data
-        });
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        transport_data: data
       });
-    this.getweatherExcuse_data();
+    });
+  }
+  // Request Traffic API
+  getTrafficData() {
     //Traffic data
     let trafficData = [];
 
@@ -103,6 +112,12 @@ class App extends Component {
         });
       });
   }
+  
+  componentDidMount() {
+    this.getTranportData();
+    this.getweatherExcuse_data();
+    this.getTrafficData();
+  }
 
   // Change excuses category
   changeCategory = event => {
@@ -112,6 +127,10 @@ class App extends Component {
   };
 
   displayRandomExcuse = () => {
+    this.getTranportData();
+    this.getweatherExcuse_data();
+    this.getTrafficData();
+
     // Loading animation
     const loader = document.querySelector(".scaling");
     const buttonT = document.querySelector(".button.transport");
@@ -169,9 +188,9 @@ class App extends Component {
       switch (this.state.category) {
         case "transport":
         // Display the serious cards and hide funny one
-          document.querySelector(".Meteo").style.display = "block"
-          document.querySelector(".Transport").style.display = "block"
-          document.querySelector(".Traffic").style.display = "block"
+          document.querySelector(".Meteo").style.display = "flex"
+          document.querySelector(".Transport").style.display = "flex"
+          document.querySelector(".Traffic").style.display = "flex"
           document.querySelector(".Insolite").style.display = "none"
         // Set States
           this.setState({
@@ -233,7 +252,7 @@ class App extends Component {
           document.querySelector(".Meteo").style.display = "none"
           document.querySelector(".Transport").style.display = "none"
           document.querySelector(".Traffic").style.display = "none"
-          document.querySelector(".Insolite").style.display = "block"
+          document.querySelector(".Insolite").style.display = "flex"
           // hide left arrow wg
           document.querySelector(".Insolite .left-arrow").style.visibility = "hidden";
           // Function that randomize index in data
@@ -421,6 +440,92 @@ class App extends Component {
     home.style.display = "flex";
   };
 
+  toToggle = (e) => {
+    // Transport DOM
+    const transport = document.querySelector(".Transport .headerCard")
+    const transportImg = document.querySelector(".Transport .headerCard img")
+    const transportTitle = document.querySelector(".Transport .headerCard h2")
+    // Weather DOM
+    const weather = document.querySelector(".Meteo .headerCard")
+    const weatherImg = document.querySelector(".Meteo .headerCard img")
+    const weatherTitle = document.querySelector(".Meteo .headerCard h2")
+    // Traffic DOM
+    const traffic = document.querySelector(".Traffic .headerCard")
+    const trafficImg = document.querySelector(".Traffic .headerCard img")
+    const trafficTitle = document.querySelector(".Traffic .headerCard h2")
+
+    switch (e.target) {
+      // Transport Card
+      case transport:
+        this.setState(prevState => ({
+          transport_open: !prevState.transport_open,
+          weather_open: false,
+          traffic_open: false
+        }));
+        break;
+      case transportTitle:
+        this.setState(prevState => ({
+          transport_open: !prevState.transport_open,
+          weather_open: false,
+          traffic_open: false
+        }));
+        break;
+      case transportImg:
+        this.setState(prevState => ({
+          transport_open: !prevState.transport_open,
+          weather_open: false,
+          traffic_open: false
+        }));
+        break;
+      // Traffic Card
+      case traffic:
+        this.setState(prevState => ({
+          traffic_open: !prevState.traffic_open,
+          transport_open: false,
+          weather_open: false
+        }));
+        break;
+      case trafficImg:
+        this.setState(prevState => ({
+          traffic_open: !prevState.traffic_open,
+          transport_open: false,
+          weather_open: false
+        }));
+        break;
+      case trafficTitle:
+        this.setState(prevState => ({
+          traffic_open: !prevState.traffic_open,
+          transport_open: false,
+          weather_open: false
+        }));
+        break;
+      // Weather Card
+      case weather:
+        this.setState(prevState => ({
+          weather_open: !prevState.weather_open,
+          transport_open: false,
+          traffic_open: false
+        }));
+        break;
+      case weatherImg:
+        this.setState(prevState => ({
+          weather_open: !prevState.weather_open,
+          transport_open: false,
+          traffic_open: false
+        }));
+        break;
+      case weatherTitle:
+        this.setState(prevState => ({
+          weather_open: !prevState.weather_open,
+          transport_open: false,
+          traffic_open: false
+        }));
+        break;
+      default:
+        alert("BUG");
+    }
+  }
+
   render() {
     const modifyBackground = "background " + this.state.category;
 
@@ -450,6 +555,9 @@ class App extends Component {
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
               details="Détail de l'incident"
+              // Collapse Logic
+              isOpen={this.state.transport_open}
+              toToggle={this.toToggle}
             />
             <CardComponent
               dataTitle={"Meteo"}
@@ -459,15 +567,22 @@ class App extends Component {
               dataIssue={this.state.weather_desc}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
+              // Collapse Logic
+              isOpen={this.state.weather_open}
+              toToggle={this.toToggle}
             />
             <CardComponent
               dataTitle={"Traffic"}
               titleImage={"https://image.flaticon.com/icons/svg/1683/1683859.svg"}
               dataExcuse={"J'étais bloqué dans le traffic"}
               dataIssue={this.state.traffic_issue}
+              dataLogo={this.state.traffic_logo}
               time={this.state.traffic_time}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
+              // Collapse Logic
+              isOpen={this.state.traffic_open}
+              toToggle={this.toToggle}
             />
             <CardFunny
               // Data

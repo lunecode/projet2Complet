@@ -1,13 +1,9 @@
 import React from "react";
 import "./CardFunny.css";
 import "./CardComponent.css";
-
-
-import Excuse from "./Excuse";
-import DetailsAlert from "./DetailsAlert";
 import CardCTA from './CardCTA'
 
-  const CardFunny = ({dataExcuse, dataLogo, dataTitle, dataTime, dataLastTime, dataIssue, toPrevious, toNext, goBack}) => {
+  const CardFunny = ({dataExcuse, dataLogo, dataTitle, dataTime, dataLastTime, dataIssue, toPrevious, toNext, goBack, details}) => {
 
     const cardClasses = 'cardComponent ' + dataTitle;
 
@@ -20,7 +16,14 @@ import CardCTA from './CardCTA'
           />
           <h2>{dataTitle}</h2>
         </div>
-        <DetailsAlert picture={dataLogo} funnyClass="meme" />
+        <div className="container-DetailsAlert">
+        <div>
+          <div >
+            <img src={dataLogo} alt="train line logo" className="meme"/>
+          </div>
+         {/* <Moment fromNow ago locale="fr"><p>{this.props.time}</p></Moment> */}
+        </div>
+      </div>
         <div className="frame">
           <div className="excuse">
             <div className="excuse-scroll">"{dataExcuse}"</div>

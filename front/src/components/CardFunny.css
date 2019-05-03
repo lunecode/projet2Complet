@@ -6,18 +6,31 @@
     justify-content: space-around;
 }
 
+
+
+.divDetails > p {
+  margin: 5px;
+  font-size: 1em;
+}
+
+.divDetails{
+  margin: 5px;
+  padding: auto;
+}
+
+
 .meme {
-    height: 200px;
-    width: 100%;
-    object-fit: contain;
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
 }
 
 .excuse { 
-    display: flex; 
-    align-items: center; 
-  } 
+  display: flex; 
+  align-items: center; 
+} 
 
-  .excuse-scroll { 
-    max-height: 100%; 
-    overflow: scroll; 
-  }
+.excuse-scroll { 
+  max-height: 100%; 
+  overflow: scroll; 
+}

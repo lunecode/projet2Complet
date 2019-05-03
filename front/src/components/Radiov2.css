@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:700,900");
 .normal-container {
   position: absolute;
-  top:440px;
+  top:400px;
   margin: auto;
 }
 
@@ -209,7 +209,7 @@
     border-right-color: rgba(1, 1, 1, 0);
     border-left-color: rgba(1, 1, 1, 0);
     top: 23px;
-    left: 192px;
+    left: 188px;
     -webkit-transform: rotateX(180deg);
             transform: rotateX(180deg);
     border-radius: 100%;
@@ -220,15 +220,15 @@
   }
 
   #funny:checked ~ .smile-rating-toggle {
-    left: 182px;
+    left: 172px;
   }
 
   #funny:checked ~ .rating-eye-left {
-    left: 195px;
+    left: 194px;
   }
 
   #funny:checked ~ .rating-eye-right {
-    left: 216px;
+    left: 215px;
   }
 
   #funny:checked ~ .toggle-rating-pill {
