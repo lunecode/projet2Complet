@@ -36,7 +36,7 @@ import{FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from
               url={dataLogo}
               quote={dataExcuse}
               hashtag="#SorryBossImLate">
-                <FacebookIcon size={50}/>
+                <FacebookIcon size={25}/>
               </FacebookShareButton> 
             </li>
             <li>
@@ -44,7 +44,7 @@ import{FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from
                 url={dataLogo}
                 title={dataExcuse}
                  >
-                <TwitterIcon size={50}/>
+                <TwitterIcon size={25}/>
               </TwitterShareButton>
             </li>
           </ul>
