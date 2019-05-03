@@ -9,11 +9,12 @@ import RandomData from "./data/random_excuses";
 import TransportData from "./data/transport_excuses";
 
 // Components
-import DetailsAlert from "./components/DetailsAlert";
 import Button from "./components/Button";
 import Radio from "./components/Radio";
 import CardComponent from "./components/CardComponent";
-import LoaderText from "./components/LoaderText"
+import CardFunny from "./components/CardFunny"
+
+// import LoaderText from "./components/LoaderText"
 
 class App extends Component {
   // Declare App states
@@ -441,6 +442,7 @@ class App extends Component {
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
             />
+            <CardFunny />
           </div>
         </div>
       </div>

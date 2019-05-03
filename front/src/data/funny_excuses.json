@@ -1,0 +1,62 @@
+[
+    {
+        "image" : "https://imgix.ranker.com/user_node_img/50089/1001766525/original/h-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces",
+        "id": 1,
+        "excuse": "J'ai oublié d'enlever la lecture automatique sur Netflix"
+    },
+    {
+        "image" : "https://pbs.twimg.com/media/DjSozXHUUAAlQFH.jpg",
+        "id": 2,
+        "excuse": "Trump"
+    },
+    {
+        "image" : "http://s2.quickmeme.com/img/c3/c3d707aef1f2206848dfdd478c1c5f0355f9f50dc4c238f5e968bb27a2f08e10.jpg",
+        "id": 3,
+        "excuse": "Désolé j'avais piscine"
+    },
+    {
+        "image" : "http://images7.memedroid.com/images/UPLOADED144/556d2907c65ff.jpeg",
+        "id": 4,
+        "excuse": "Ma soeur accouchait ce matin, normalement c'est un garçon"
+    },
+    {
+        "image" : "https://i.imgflip.com/10vt39.jpg",
+        "id": 5,
+        "excuse": "L'audace c'est ça."
+    },
+    {
+        "image" : "https://pics.awwmemes.com/tom-cruise-isa-dream-com-truise-mgilip-com-35090407.png",
+        "id": 6,
+        "excuse": "Il y avait un tournage de film d'action sur la ligne 1, je suis en retard mais il y avait Tom Cruise c'était cool!"
+    },
+    {
+        "image" : "https://memegenerator.net/img/instances/50530333/sick-kids-sick-kids-everywhere.jpg",
+        "id": 7,
+        "excuse": "J'ai dû emmener mon fils chez le docteur ce matin"
+    },
+    {
+        "image" : "https://thechive.files.wordpress.com/2018/12/zodiac-memes-that-mean-absolutely-nothing-just-like-your-horoscope-23-photos-17.jpg?quality=85&strip=info&w=600",
+        "id": 8,
+        "excuse": "Horoscope défavorable"
+    },
+    {
+        "image" : "https://s-media-cache-ak0.pinimg.com/736x/4c/58/9a/4c589abfbf166651e72ede2fed676516--funny-cops-funny-police.jpg",
+        "id": 9,
+        "excuse": "Je me suis fais contrôler par la police sur le chemin"
+    },
+    {
+        "image": "https://www.memecreator.org/static/images/memes/4322065.jpg",
+        "id": 10,
+        "excuse": "Franchement je suis resté 2 heures de plus hier, je peux bien arriver en retard de deux heures aujourd'hui."
+    },
+    {
+        "image": "http://cdn.scooppick.com/wp-content/uploads/2014/09/Stuck-In-Traffic.jpg",
+        "id": 11,
+        "excuse": "Déjà de base les gens ne savent pas conduire quand il pleut un peu, mais en plus une audi a tapé une course poursuite avec la police, ils ont commencé a rouler sur les trotoir. Je suis resté bloqué, franchement j'aurais du filmer."
+    },
+    {
+        "image":"http://www.quickmeme.com/img/8b/8b9b8f27135f19e7519da1ad069914ddc1fbc6c5bfdad1bce1b9ecf3ca99032b.jpg",
+        "id": 12,
+        "excuse": "J'en ai une bonne : un camion qui percute un pont, un bloc de béton tombe sur la voie de rer... Je vous raconte la suite demain."
+    }
+]
