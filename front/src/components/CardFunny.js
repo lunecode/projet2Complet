@@ -1,7 +1,8 @@
 import React from "react";
 import "./CardFunny.css";
 import "./CardComponent.css";
-import CardCTA from './CardCTA'
+import CardCTA from './CardCTA';
+import{FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 
   const CardFunny = ({dataExcuse, dataLogo, dataTitle, dataTime, dataLastTime, dataIssue, toPrevious, toNext, goBack, details}) => {
 
@@ -29,13 +30,31 @@ import CardCTA from './CardCTA'
             <div className="excuse-scroll">"{dataExcuse}"</div>
           </div>
         </div>
+        <ul>
+            <li>
+              <FacebookShareButton
+              url={dataLogo}
+              quote={dataExcuse}
+              hashtag="#SorryBossImLate">
+                <FacebookIcon size={50}/>
+              </FacebookShareButton> 
+            </li>
+            <li>
+              <TwitterShareButton
+                url={dataLogo}
+                title={dataExcuse}
+                 >
+                <TwitterIcon size={50}/>
+              </TwitterShareButton>
+            </li>
+          </ul>
         <div className="Card-CTA">
           <i className={"fas fa-chevron-left left-arrow"} />
           <CardCTA dataCopy={dataExcuse} />
           <i
             className={"fas fa-chevron-right right-arrow"}
             onClick={toNext}
-          />
+          />          
         </div>
       </div>
     );

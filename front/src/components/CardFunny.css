@@ -34,3 +34,7 @@
   max-height: 100%; 
   overflow: scroll; 
 }
+li {
+  list-style: none;
+  display: inline-block;
+  }
