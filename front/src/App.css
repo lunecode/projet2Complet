@@ -11,7 +11,8 @@ body{
 
 .background{
   width: 100%;
-  min-height: 100vh;
+  min-height: 120vh;
+  max-height:140vh;
   margin: 0px;
   padding: 0px;
 }
@@ -23,7 +24,7 @@ body{
   background: linear-gradient(135deg, #4dcb7f 0%,#4dcbbe 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4dcb7f', endColorstr='#4dcbbe',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */  
   background-repeat: no-repeat;
-  /* min-height: 140vh; */
+  min-height: 140vh;
 }
 
 .background.funny{
