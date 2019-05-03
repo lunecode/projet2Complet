@@ -25,6 +25,7 @@ class App extends Component {
     traffic_data: [],
     // Traffic states
     traffic_time: "",
+    traffic_index: 0,
     // Transport states
     transport_logo: "",
     transport_index: 0,
@@ -164,6 +165,7 @@ class App extends Component {
       switch (this.state.category) {
         case "transport":
           this.setState({
+            // Set transport states
             transport_excuse:
               "Désolé je vais être en retard, il y a " +
               this.state.transport_data[0].issueText +
@@ -175,7 +177,7 @@ class App extends Component {
             transport_last_time: this.state.transport_data[0].last_time,
             transport_time: this.state.transport_data[0].time,
             transport_issue: this.state.transport_data[0].issue,
-            // Set traffic state
+            // Set traffic states
             traffic_time: this.state.traffic_data[0].date,
             traffic_issue: this.state.traffic_data[0].cause
           });
@@ -240,7 +242,6 @@ class App extends Component {
   };
 
   toNextCard = (e) => {
-
     if (this.state.category === "funny") {
       // Function that randomize index in data
       const randomize = data => Math.floor(Math.random() * data.length);
@@ -256,90 +257,135 @@ class App extends Component {
       const rightArrowTransport = document.querySelector(".Transport .right-arrow");
       const leftArrowTraffic = document.querySelector(".Traffic .left-arrow");
       const rightArrowTraffic = document.querySelector(".Traffic .right-arrow");
-            
-      if (this.state.transport_index < this.state.transport_data.length - 1) {
-        // Removes inactive style on left arrow
-        leftArrowTransport.classList.remove("inactive");
-        leftArrowTraffic.classList.remove("inactive");
-
-        // Add inactive style on right arrow
-        // We have to length -2 instead of -1 because the index state is not updated yet at the moment the user clicks
-        if (this.state.transport_index === this.state.transport_data.length - 2) {
-          rightArrowTransport.classList.add("inactive");
-          rightArrowTraffic.classList.add("inactive");
+      // Set different states depending on cards arrow click
+      switch(e.target){
+        case rightArrowTransport:
+        if (this.state.transport_index < this.state.transport_data.length - 1) {
+          // Removes inactive style on left arrow
+          leftArrowTransport.classList.remove("inactive");
+  
+          // Add inactive style on right arrow
+          // We have to length -2 instead of -1 because the index state is not updated yet at the moment the user clicks
+          if (this.state.transport_index === this.state.transport_data.length - 2) {
+            rightArrowTransport.classList.add("inactive");
+          }
+  
+          // Updating card info relatively to the previous card info by adding 1 on index
+          this.setState(prevState => ({
+            transport_index: prevState.transport_index + 1,
+            transport_excuse:
+              "Désolé je vais être en retard, il y a " +
+              this.state.transport_data[prevState.transport_index + 1].issueText +
+              " sur la " +
+              this.state.transport_data[prevState.transport_index + 1].line.name +
+              " à cause " +
+              this.state.transport_data[prevState.transport_index + 1].cause,
+            transport_logo: this.state.transport_data[
+              prevState.transport_index + 1
+            ].line.image,
+            transport_last_time: this.state.transport_data[
+              prevState.transport_index + 1
+            ].last_time,
+            transport_time: this.state.transport_data[
+              prevState.transport_index + 1
+            ].time,
+            transport_issue: this.state.transport_data[
+              prevState.transport_index + 1
+            ].issue,
+            // traffic_issue: this.state.traffic_data[prevState.transport_index + 1].cause,
+            // traffic_time: this.state.traffic_data[prevState.transport_index + 1].date
+          }));
         }
-
-        // Updating card info relatively to the previous card info by adding 1 on index
-        this.setState(prevState => ({
-          transport_index: prevState.transport_index + 1,
-          transport_excuse:
-            "Désolé je vais être en retard, il y a " +
-            this.state.transport_data[prevState.transport_index + 1].issueText +
-            " sur la " +
-            this.state.transport_data[prevState.transport_index + 1].line.name +
-            " à cause " +
-            this.state.transport_data[prevState.transport_index + 1].cause,
-          transport_logo: this.state.transport_data[
-            prevState.transport_index + 1
-          ].line.image,
-          transport_last_time: this.state.transport_data[
-            prevState.transport_index + 1
-          ].last_time,
-          transport_time: this.state.transport_data[
-            prevState.transport_index + 1
-          ].time,
-          transport_issue: this.state.transport_data[
-            prevState.transport_index + 1
-          ].issue,
-          traffic_issue: this.state.traffic_data[prevState.transport_index + 1].cause,
-          traffic_time: this.state.traffic_data[prevState.transport_index + 1].date
-        }));
-        console.log(this.state.transport_index);
+        break;
+        case rightArrowTraffic:
+        if (this.state.traffic_index < this.state.traffic_data.length - 1) {
+          // Removes inactive style on left arrow
+          leftArrowTraffic.classList.remove("inactive");
+  
+          // Add inactive style on right arrow
+          // We have to length -2 instead of -1 because the index state is not updated yet at the moment the user clicks
+          if (this.state.traffic_index === this.state.traffic_data.length - 2) {
+            rightArrowTraffic.classList.add("inactive");
+          }
+  
+          // Updating card info relatively to the previous card info by adding 1 on index
+          this.setState(prevState => ({
+            traffic_index: prevState.traffic_index + 1,
+            traffic_issue: this.state.traffic_data[prevState.traffic_index + 1].cause,
+            traffic_time: this.state.traffic_data[prevState.traffic_index + 1].date
+          }));
+          console.log(this.state.traffic_index);
+        }
+        break;
+        default:
+        alert("problem")
       }
+      
     }
   };
 
-  toPreviousCard = () => {
+  toPreviousCard = (e) => {
     const leftArrowTransport = document.querySelector(".Transport .left-arrow");
     const rightArrowTransport = document.querySelector(".Transport .right-arrow");
     const leftArrowTraffic = document.querySelector(".Traffic .left-arrow");
     const rightArrowTraffic = document.querySelector(".Traffic .right-arrow");
-
-    if (this.state.transport_index > 0) {
-      // Removes inactive style on right arrow
-      rightArrowTransport.classList.remove("inactive");
-        rightArrowTraffic.classList.remove("inactive");
-
-      // Adds inactive style on right arrow
-      // We have to use the index 1 instead of 0 because the index state is not updated yet at the moment the user clicks
-      if (this.state.transport_index === 1) {
-        leftArrowTransport.classList.add("inactive");
-        leftArrowTraffic.classList.remove("inactive");
+    switch(e.target) {
+      case leftArrowTransport:
+      if (this.state.transport_index > 0) {
+        // Removes inactive style on right arrow
+        rightArrowTransport.classList.remove("inactive");
+          rightArrowTraffic.classList.remove("inactive");
+  
+        // Adds inactive style on right arrow
+        // We have to use the index 1 instead of 0 because the index state is not updated yet at the moment the user clicks
+        if (this.state.transport_index === 1) {
+          leftArrowTransport.classList.add("inactive");
+          leftArrowTraffic.classList.add("inactive");
+        }
+        // Updating card info relatively to the previous card info by substracting 1 on index
+        this.setState(prevState => ({
+          transport_index: prevState.transport_index - 1,
+          transport_excuse:
+            "Désolé je vais être en retard, il y a " +
+            this.state.transport_data[prevState.transport_index - 1].issueText +
+            " sur la " +
+            this.state.transport_data[prevState.transport_index - 1].line.name +
+            " à cause " +
+            this.state.transport_data[prevState.transport_index - 1].cause,
+          transport_logo: this.state.transport_data[prevState.transport_index - 1]
+            .line.image,
+          transport_last_time: this.state.transport_data[
+            prevState.transport_index - 1
+          ].last_time,
+          transport_time: this.state.transport_data[prevState.transport_index - 1]
+            .time,
+          transport_issue: this.state.transport_data[
+            prevState.transport_index - 1
+          ].issue
+        }));
       }
-
-      // Updating card info relatively to the previous card info by substracting 1 on index
-      this.setState(prevState => ({
-        transport_index: prevState.transport_index - 1,
-        transport_excuse:
-          "Désolé je vais être en retard, il y a " +
-          this.state.transport_data[prevState.transport_index - 1].issueText +
-          " sur la " +
-          this.state.transport_data[prevState.transport_index - 1].line.name +
-          " à cause " +
-          this.state.transport_data[prevState.transport_index - 1].cause,
-        transport_logo: this.state.transport_data[prevState.transport_index - 1]
-          .line.image,
-        transport_last_time: this.state.transport_data[
-          prevState.transport_index - 1
-        ].last_time,
-        transport_time: this.state.transport_data[prevState.transport_index - 1]
-          .time,
-        transport_issue: this.state.transport_data[
-          prevState.transport_index - 1
-        ].issue,
-        traffic_issue: this.state.traffic_data[prevState.transport_index - 1].cause,
-        traffic_time: this.state.traffic_data[prevState.transport_index - 1].date
-      }));
+      break;
+      case leftArrowTraffic:
+      if (this.state.traffic_index > 0) {
+        // Removes inactive style on right arrow
+          rightArrowTraffic.classList.remove("inactive");
+  
+        // Adds inactive style on right arrow
+        // We have to use the index 1 instead of 0 because the index state is not updated yet at the moment the user clicks
+        if (this.state.traffic_index === 1) {
+          leftArrowTraffic.classList.add("inactive");
+        }
+  
+        // Updating card info relatively to the previous card info by substracting 1 on index
+        this.setState(prevState => ({
+          traffic_index: prevState.traffic_index - 1,
+          traffic_issue: this.state.traffic_data[prevState.traffic_index- 1].cause,
+          traffic_time: this.state.traffic_data[prevState.traffic_index - 1].date
+        }));
+      }
+      break;
+      default:
+      alert("problem");
     }
   };
 
@@ -366,6 +412,10 @@ class App extends Component {
             <Radio func={this.changeCategory} />
           </div>
           <div className="Cards">
+            <button className="back-btn" onClick={this.goBack}>
+              <i className="fas fa-arrow-left back-logo" />
+              Retour
+            </button>
             <CardComponent
               dataTitle={"Transport"}
               dataExcuse={this.state.transport_excuse}
@@ -374,7 +424,6 @@ class App extends Component {
               dataIssue={"Problème: " + this.state.transport_issue}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
-              goBack={this.goBack}
             />
             <CardComponent
               dataTitle={"Weather"}
@@ -383,7 +432,6 @@ class App extends Component {
               dataIssue={this.state.weather_desc}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
-              goBack={this.goBack}
             />
             <CardComponent
               dataTitle={"Traffic"}
@@ -392,7 +440,6 @@ class App extends Component {
               dataTime={this.state.traffic_time}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
-              goBack={this.goBack}
             />
           </div>
         </div>
