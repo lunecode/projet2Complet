@@ -6,8 +6,7 @@ import "./components/Radio.css";
 
 // Data
 import RandomData from "./data/random_excuses";
-import TransportData from "./data/transport_excuses";
-
+import FunnyData from "./data/funny_excuses";
 // Components
 import Button from "./components/Button";
 import Radio from "./components/Radio";
@@ -24,6 +23,7 @@ class App extends Component {
     // API DATA
     transport_data: [],
     traffic_data: [],
+    funny_data: FunnyData,
     // Traffic states
     traffic_time: "",
     traffic_index: 0,
@@ -35,7 +35,10 @@ class App extends Component {
     transport_issue: "",
     // Weeather states
     weather_icon: "",
-    weather_desc: ""
+    weather_desc: "",
+    // Funny states:
+    funny_excuse: "",
+    funny_image: ""
   };
 
   // Request Weather API
@@ -160,11 +163,17 @@ class App extends Component {
       leftArrowTransport.classList.add("inactive");
       leftArrowTraffic.classList.add("inactive");
       // 
-      document.querySelector(".Weather .right-arrow").style.visibility = "hidden";
-      document.querySelector(".Weather .left-arrow").style.visibility = "hidden";
+      document.querySelector(".Meteo .right-arrow").style.visibility = "hidden";
+      document.querySelector(".Meteo .left-arrow").style.visibility = "hidden";
 
       switch (this.state.category) {
         case "transport":
+        // Display the serious cards and hide funny one
+          document.querySelector(".Meteo").style.display = "block"
+          document.querySelector(".Transport").style.display = "block"
+          document.querySelector(".Traffic").style.display = "block"
+          document.querySelector(".Insolite").style.display = "none"
+        // Set States
           this.setState({
             // Set transport states
             transport_excuse:
@@ -220,19 +229,23 @@ class App extends Component {
           break;
 
         case "funny":
+          // Display the funny card and hide serious ones
+          document.querySelector(".Meteo").style.display = "none"
+          document.querySelector(".Transport").style.display = "none"
+          document.querySelector(".Traffic").style.display = "none"
+          document.querySelector(".Insolite").style.display = "block"
+          // hide left arrow wg
+          document.querySelector(".Insolite .left-arrow").style.visibility = "hidden";
           // Function that randomize index in data
           const randomize = data =>
             Math.floor(Math.random() * data.length);
           // Declare empty variable that will store randomized index
           let idRandomzized;
-          idRandomzized = randomize(RandomData[1].funny);
+          idRandomzized = randomize(this.state.funny_data);
           // Update excuse state with randomized index
           this.setState({
-            transport_excuse: RandomData[1].funny[idRandomzized].excuse,
-            transport_logo: "",
-            transport_last_time: "",
-            transport_time: "",
-            transport_issue: ""
+            funny_excuse: this.state.funny_data[idRandomzized].excuse,
+            funny_image: this.state.funny_data[idRandomzized].image
           });
           break;
 
@@ -248,10 +261,11 @@ class App extends Component {
       const randomize = data => Math.floor(Math.random() * data.length);
       // Declare empty variable that will store randomized index
       let idRandomzized;
-      idRandomzized = randomize(RandomData[1].funny);
+      idRandomzized = randomize(this.state.funny_data);
       // Update excuse state with randomized index
       this.setState({
-        funny_excuse: RandomData[1].funny[idRandomzized].excuse
+        funny_excuse: this.state.funny_data[idRandomzized].excuse,
+        funny_image: this.state.funny_data[idRandomzized].image
       });
     } else {
       const leftArrowTransport = document.querySelector(".Transport .left-arrow");
@@ -393,6 +407,15 @@ class App extends Component {
   goBack = () => {
     const cards = document.querySelector(".Cards");
     const home = document.querySelector(".Home");
+    // All Arrows
+    const allLeftArrows = document.querySelectorAll(".left-arrow");
+    const allRightArrows = document.querySelectorAll(".right-arrow");
+
+    // Resets Arrows inactive display
+    for (let i = 0; i < allLeftArrows.length; i++) {
+      allLeftArrows[i].classList.remove("inactive");
+      allRightArrows[i].classList.remove("inactive");
+    }
 
     cards.style.display = "none";
     home.style.display = "flex";
@@ -419,15 +442,18 @@ class App extends Component {
             </button>
             <CardComponent
               dataTitle={"Transport"}
+              titleImage={"https://image.flaticon.com/icons/svg/1185/1185517.svg"}
               dataExcuse={this.state.transport_excuse}
               dataLogo={this.state.transport_logo}
               dataLastTime={this.state.transport_last_time}
               dataIssue={"Problème: " + this.state.transport_issue}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
+              details="Détail de l'incident"
             />
             <CardComponent
-              dataTitle={"Weather"}
+              dataTitle={"Meteo"}
+              titleImage={"https://image.flaticon.com/icons/svg/1146/1146868.svg"}
               dataExcuse={this.state.weather_excuse}
               dataLogo={this.state.weather_icon}
               dataIssue={this.state.weather_desc}
@@ -436,13 +462,26 @@ class App extends Component {
             />
             <CardComponent
               dataTitle={"Traffic"}
+              titleImage={"https://image.flaticon.com/icons/svg/1683/1683859.svg"}
               dataExcuse={"J'étais bloqué dans le traffic"}
               dataIssue={this.state.traffic_issue}
-              dataTime={this.state.traffic_time}
+              time={this.state.traffic_time}
               toPrevious={this.toPreviousCard}
               toNext={this.toNextCard}
             />
-            <CardFunny />
+            <CardFunny
+              // Data
+              dataTitle={"Insolite"}
+              titleImage={
+                "https://image.flaticon.com/icons/svg/1185/1185517.svg"
+              }
+              dataExcuse={this.state.funny_excuse}
+              dataLogo={this.state.funny_image}
+              // Functionnalities
+              goBack={this.goBack}
+              toNext={this.toNextCard}
+              toPrevious={this.toPreviousCard}
+            />
           </div>
         </div>
       </div>

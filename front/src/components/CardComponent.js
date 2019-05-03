@@ -32,7 +32,7 @@ class CardComponent extends Component {
         <div className='headerCard' onClick={this.toToggle}>
 
           <img
-            src="https://www.retif.eu/media/image/400x/picto-028-pole-de-correspondance-ou-gare-routiere-pvc-fond-blanc-125x125mm_01.jpg"
+            src={this.props.titleImage}
             alt="title img"
           />
           <h2>{this.props.dataTitle}</h2>
@@ -44,7 +44,7 @@ class CardComponent extends Component {
 
           <DetailsAlert
             picture={this.props.dataLogo}
-            details="Détails de l'incident"
+            details={this.props.details}
             lastTime={this.props.dataLastTime}
             time={this.props.dataTime}
             issue={this.props.dataIssue}
